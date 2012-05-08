@@ -330,6 +330,7 @@ INSTALLED_APPS = (
     'commonware.response.cookies',
     'djcelery',
     'django_nose',
+    'cronjobs',
     #'session_csrf',
 
     # L10n
@@ -355,6 +356,10 @@ INSTALLED_APPS = (
 PWD_ALGORITHM = 'bcrypt'
 HMAC_KEYS = {
     #'2011-01-01': 'cheesecake',
+}
+
+FEEDS = {
+    'mozilla': 'http://blog.mozilla.org/feed/'
 }
 
 GMAP_API_KEY = ''
