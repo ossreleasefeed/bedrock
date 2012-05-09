@@ -190,6 +190,7 @@ def download_button(ctx, id, format='large', build=None):
                        'download_link': download_link,
                        'download_link_direct': download_link_direct})
 
+<<<<<<< HEAD
     if build == 'aurora':
         android_link = download_urls['aurora-mobile']
     elif build == 'beta':
