@@ -6,6 +6,10 @@
 #outer-wrapper {
     background-color: #04a2dc;
 }
+#wrapper {
+    background: #04a2dc url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
+    width: 1400px;
+}
 main {
     margin: 0 auto;
     width: 1440px;
@@ -94,5 +98,145 @@ a:visted {
     width: 1100px;
     li {
         display: inline;
+    }
+}
+/* temp */
+.demo-phone-container {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    overflow: hidden;
+}
+.demo-phone-container img {
+    position: relative;
+    left: -253px;
+    z-index: 3;
+}
+.demo-phone-container img.wireframe-screens {
+    position: absolute;
+    top: 48px;
+    left: 20px;
+    z-index: 1;
+
+    -webkit-animation-name: swipe;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+
+    animation-name: swipe;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+.screens-sprite {
+    position: absolute;
+    top: 48px;
+    left: 23%;
+    background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
+    clip: rect(0, 277px, 498px, 0);
+    width: 277px;
+    height: 498px;
+    z-index: 2;
+
+    -webkit-animation-name: swipe-screens;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+
+    animation-name: swipe-screens;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+@-webkit-keyframes swipe {
+    15% {
+        left: 20px;
+    }
+    25% {
+        left: 20px;
+    }
+    40% {
+        left: -290px;
+    }
+    65% {
+        left: -597px;
+    }
+    70% {
+        left: -290px;
+    }
+    75% {
+        left: 20px;
+    }
+    90% {
+        left: 329px;
+    }
+}
+@keyframes swipe {
+    0% {
+        left: 20px;
+    }
+    15% {
+        left: 20px;
+    }
+    40% {
+        left: -290px;
+    }
+    65% {
+        left: -597px;
+    }
+    70% {
+        left: -290px;
+    }
+    75% {
+        left: 20px;
+    }
+    90% {
+        left: 329px;
+    }
+}
+@-webkit-keyframes swipe-screens {
+    0% {
+        background-position: -310px 0;
+    }
+    15% {
+        background-position: -310px 0;
+    }
+    40% {
+        background-position: -623px 0;
+    }
+    65% {
+        background-position: -930px 0;
+    }
+    70% {
+        background-position: -623px 0;
+    }
+    75% {
+        background-position: -310px 0;
+    }
+    90% {
+        background-position: 0 0;
+    }
+}
+@keyframes swipe-screens {
+    0% {
+        background-position: -310px 0;
+    }
+    15% {
+        background-position: -310px 0;
+    }
+    40% {
+        background-position: -623px 0;
+    }
+    65% {
+        background-position: -930px 0;
+    }
+    70% {
+        background-position: -623px 0;
+    }
+    75% {
+        background-position: -310px 0;
+    }
+    90% {
+        background-position: 0 0;
     }
 }
