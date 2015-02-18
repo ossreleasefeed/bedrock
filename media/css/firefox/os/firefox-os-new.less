@@ -1,0 +1,98 @@
+@import "../../sandstone/lib.less";
+
+* {
+    box-sizing: border-box;
+}
+#outer-wrapper {
+    background-color: #04a2dc;
+}
+main {
+    margin: 0 auto;
+    width: 1440px;
+    text-align: center;
+    h1 {
+        &.huge {
+            color: white;
+            font-weight: 700;
+        }
+        span {
+            font-weight: normal;
+        }
+    }
+    h2, h3 {
+        color: white;
+    }
+    .tagline {
+        font-family: "Open Sans Light",X-LocaleSpecific-Light,"Open Sans",X-LocaleSpecific,sans-serif;
+        font-size: 2rem;
+    }
+    ul {
+        text-align: center;
+    }
+}
+.fxos-hero-space {
+    background-color: #0c99d5;
+    color: white;
+}
+a:link,
+a:visted {
+    &.cta-button {
+        background-color: #005189;
+        color: white;
+    }
+}
+.cta-button {
+    border: 0;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 0.5em 2em;
+
+}
+.fxos-help {
+    .clearfix();
+}
+.fxos-features {
+    background-color: white;
+    .clearfix();
+    h2, h3 {
+        color: #333;
+    }
+    .feature {
+        display: inline-block;
+        width: 29%;
+        margin: 0 5% 0 0;
+    }
+    :last-child.feature {
+        margin: 0;
+    }
+}
+.fxos-apps,
+.fxos-marketplace,
+.fxos-help {
+    background-color: #0c99d5;
+    color: white;
+}
+.fxos-community {
+    background-color: white;
+    color: #333;
+}
+.app-group-selector {
+    li {
+        display: inline;
+        a:link,
+        a:visited {
+            display: inline-block;
+            background-color: #005189;
+            color: white;
+            border: 2px solid #71c4ea;
+        }
+    }
+}
+.apps {
+    margin: 0 auto;
+    width: 1100px;
+    li {
+        display: inline;
+    }
+}

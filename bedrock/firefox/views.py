@@ -541,6 +541,17 @@ class TourView(LatestFxView):
         return [template]
 
 
+def fxos(request):
+    locale = l10n_utils.get_locale(request)
+    old_home = 'firefox/os/index.html'
+    new_home = 'firefox/os/index-new.html'
+
+    if l10n_utils.template_is_active(new_home, locale):
+        return l10n_utils.render(request, new_home)
+    else:
+        return l10n_utils.render(request, old_home)
+
+
 def hello(request):
     videos = {
         'ar': 'https://videos.cdn.mozilla.net/uploads/FirefoxHello/firefoxhello_intro_arabic',
