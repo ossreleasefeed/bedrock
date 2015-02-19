@@ -24,6 +24,7 @@ main {
         color: white;
     }
     .tagline {
+        margin-bottom: .7em;
         font-family: "Open Sans Light",X-LocaleSpecific-Light,"Open Sans",X-LocaleSpecific,sans-serif;
         font-size: 2rem;
     }
@@ -34,26 +35,78 @@ main {
 .fxos-hero-space {
     background-color: #04a2dc;
     color: white;
+    padding-top: 8em;
+    height: 1250px;
+    overflow: hidden;
     ul {
         margin: 0;
         padding: 0;
         list-style: none;
     }
 }
-a:link,
-a:visted {
-    &.cta-button {
-        background-color: #005189;
-        color: white;
+.phone {
+
+}
+.demo-phone-container {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 640px;
+    overflow: hidden;
+    img {
+        position: relative;
+        left: -253px;
+        z-index: 3;
+    }
+    img.wireframe-screens {
+        position: absolute;
+        top: 48px;
+        left: 20px;
+        z-index: 1;
+
+        -webkit-animation-name: swipe;
+        -webkit-animation-duration: 10s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease-in-out;
+
+        animation-name: swipe;
+        animation-duration: 10s;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in-out;
     }
 }
+.screens-sprite {
+    position: absolute;
+    top: 48px;
+    left: 23%;
+    background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
+    clip: rect(0, 277px, 498px, 0);
+    width: 277px;
+    height: 498px;
+    z-index: 2;
+
+    -webkit-animation-name: swipe-screens;
+    -webkit-animation-duration: 10s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+
+    animation-name: swipe-screens;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
 .cta-button {
+    background-color: #005189;
     border: 0;
     border-radius: 6px;
+    color: white;
     display: inline-block;
-    font-size: 1.2em;
-    padding: 0.5em 2em;
+    font-size: 1.4em;
+    padding: .7em 3em;
 
+}
+.get-phone {
+    margin-bottom: 4em;
 }
 .fxos-help {
     .clearfix();
@@ -135,54 +188,7 @@ a:visted {
         margin: 0 20px 40px 60px;
     }
 }
-/* temp */
-.demo-phone-container {
-    position: relative;
-    width: 100%;
-    height: 640px;
-    overflow: hidden;
-}
-.demo-phone-container img {
-    position: relative;
-    left: -253px;
-    z-index: 3;
-}
-.demo-phone-container img.wireframe-screens {
-    position: absolute;
-    top: 48px;
-    left: 20px;
-    z-index: 1;
 
-    -webkit-animation-name: swipe;
-    -webkit-animation-duration: 10s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease-in-out;
-
-    animation-name: swipe;
-    animation-duration: 10s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-}
-.screens-sprite {
-    position: absolute;
-    top: 48px;
-    left: 23%;
-    background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
-    clip: rect(0, 277px, 498px, 0);
-    width: 277px;
-    height: 498px;
-    z-index: 2;
-
-    -webkit-animation-name: swipe-screens;
-    -webkit-animation-duration: 10s;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease-in-out;
-
-    animation-name: swipe-screens;
-    animation-duration: 10s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-}
 @-webkit-keyframes swipe {
     15% {
         left: 20px;
