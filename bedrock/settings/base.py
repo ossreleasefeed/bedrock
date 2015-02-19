@@ -1336,6 +1336,23 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/firefox_os-bundle.js',
     },
+    'firefox_os_new': {
+        'source_filenames': (
+            'js/base/mozilla-modal.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
+            'js/libs/jquery.plusslider.js',
+            'js/libs/jquery.color.js',
+            'js/libs/script.js',
+            'js/libs/socialshare.min.js',
+            'js/firefox/os/firefox-os-new.js',
+            'js/firefox/os/desktop.js',
+            'js/firefox/os/have-it.js',
+        ),
+        'output_filename': 'js/firefox_os-bundle.js',
+    },
     'firefox_os_ie9': {
         'source_filenames': (
             'js/libs/matchMedia.addListener.js',

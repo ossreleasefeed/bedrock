@@ -36,14 +36,16 @@
         <img src="{{ static('img/firefox/os-new/device.png') }}" width="304" height="637" alt="cellphone outlines" />
         <img src="{{ static('img/firefox/os-new/wireframes-sprite.png') }}" class="wireframe-screens" height="499" width="1205" alt="wireframe of app screens" />
         <div class="screens-sprite"></div>
+        <ul>
+          <li><a href="#">{{_('Scroll the homepage')}}</a></li>
+          <li><a href="#">{{_('Swipe between apps')}}</a></li>
+        </ul>
       </div>
       <div class="phone">
-        <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
+        <a href="#" id="interaction-trigger">
+          <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
+        </a>
       </div>
-      <ul>
-        <li><a href="#">{{_('Scroll the homepage')}}</a></li>
-        <li><a href="#">{{_('Swipe between apps')}}</a></li>
-      </ul>
     </section>
     <section class="fxos-features">
       <h2>{{_('Smart Has Never Been So Simple')}}</h2>
@@ -170,5 +172,5 @@
 <!--[if IE 9]>
   {% javascript 'firefox_os_ie9' %}
 <![endif]-->
-  {% javascript 'firefox_os' %}
+  {% javascript 'firefox_os_new' %}
 {% endblock  %}
