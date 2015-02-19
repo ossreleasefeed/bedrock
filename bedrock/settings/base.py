@@ -543,7 +543,6 @@ PIPELINE_CSS = {
             'css/base/mozilla-modal.less',
             'css/libs/jquery.pageslide.css',
             'css/firefox/os/get_device.less',
-            'css/firefox/os/firefox-os.less',
             'css/firefox/os/firefox-os-new.less',
         ),
         'output_filename': 'css/firefox_os_new-bundle.css',

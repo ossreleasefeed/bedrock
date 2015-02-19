@@ -3,11 +3,8 @@
 * {
     box-sizing: border-box;
 }
-#outer-wrapper {
-    background-color: #04a2dc;
-}
 #wrapper {
-    background: #04a2dc url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
+    background-color: #04a2dc;
     width: 1400px;
 }
 main {
@@ -35,8 +32,13 @@ main {
     }
 }
 .fxos-hero-space {
-    background-color: #0c99d5;
+    background-color: #04a2dc;
     color: white;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 }
 a:link,
 a:visted {
@@ -58,9 +60,17 @@ a:visted {
 }
 .fxos-features {
     background-color: white;
+    padding: 5em 3em;
     .clearfix();
     h2, h3 {
         color: #333;
+        margin-bottom: .5em;
+    }
+    h2 {
+        margin-bottom: 1.2em;
+    }
+    h3 {
+        margin-top: 1em;
     }
     .feature {
         display: inline-block;
@@ -76,6 +86,22 @@ a:visted {
 .fxos-help {
     background-color: #0c99d5;
     color: white;
+}
+.fxos-apps {
+    padding: 5em 0;
+}
+.fxos-marketplace {
+    li {
+        display: inline-block;
+        margin-left: 0;
+        margin-right: 100px;
+    }
+    span {
+        display: block;
+    }
+}
+.fxos-news {
+    background-color: #f2f2f2;
 }
 .fxos-community {
     background-color: white;
@@ -97,7 +123,16 @@ a:visted {
     margin: 0 auto;
     width: 1100px;
     li {
-        display: inline;
+        display: inline-block;
+        margin: 0 0 40px 40px;
+    }
+}
+.apps-marketplace {
+    margin: 0 auto;
+    width: 1100px;
+    li {
+        display: inline-block;
+        margin: 0 20px 40px 60px;
     }
 }
 /* temp */
