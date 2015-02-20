@@ -9,7 +9,7 @@
 }
 main {
     margin: 0 auto;
-    width: 1440px;
+    width: 1400px;
     text-align: center;
     h1 {
         &.huge {
@@ -25,36 +25,61 @@ main {
     }
     .tagline {
         margin-bottom: .7em;
-        font-family: "Open Sans Light",X-LocaleSpecific-Light,"Open Sans",X-LocaleSpecific,sans-serif;
-        font-size: 2rem;
+        .open-sans-light();
+        font-size: 2.4rem;
+        letter-spacing: -0.01em;
     }
     ul {
         text-align: center;
     }
 }
-.fxos-hero-space {
-    background-color: #04a2dc;
+/* Buttons */
+.cta-button {
+    background-color: #005189;
+    border: 0;
+    border-radius: 6px;
     color: white;
-    padding-top: 8em;
+    display: inline-block;
+    font-size: 1.4em;
+    padding: .7em 3em;
+
+}
+.get-phone {
+    display: block;
+    margin: 0 auto 3em;
+    width: 13em;
+}
+.fxos-hero-space {
+    background: #0c99d5 url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
+    color: white;
+    padding-top: 4em;
     height: 1250px;
     overflow: hidden;
+    transition: height .5s;
     ul {
         margin: 0;
         padding: 0;
         list-style: none;
     }
 }
+/* class is added to fxos-hero-space when switching to demo mode */
+.trim-height {
+    height: 900px;
+}
 .phone {
     position: relative;
     top: 0;
     margin: 0 auto;
     opacity: 1;
-    transition: all 1s;
+    transition: all .7s;
+    h1 {
+        margin-top: .5em;
+    }
 }
 .scale {
     position: absolute;
-    top: -300px;
-    left: 220px;
+    top: -808px;
+    left: 192px;
     transform: scale(.3, .3);
     opacity: 0;
 }
@@ -63,7 +88,11 @@ main {
     width: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 5s;
+    transition: opacity 3s;
+    h2 {
+        margin-bottom: 1em;
+        font-size: 3.5em;
+    }
     img {
         position: relative;
         left: 7px;
@@ -94,12 +123,23 @@ main {
             padding: .5em 2em;
         }
     }
+    .close {
+        position: absolute;
+        top: -30px;
+        right: 20px;
+        background: transparent url(/media/img/firefox/os-new/icons/close.png) 0 0 no-repeat;
+        width: 42px;
+        height: 42px;
+        span {
+            .visually-hidden();
+        }
+    }
 }
 .homescreen,
 .screens-sprite {
     position: absolute;
-    top: 48px;
-    left: 590px;
+    top: 145px;
+    left: 567px;
     clip: rect(0, 277px, 498px, 0);
     width: 277px;
     height: 498px;
@@ -123,8 +163,8 @@ main {
     display: none;
     img.wireframe-screens {
         position: absolute;
-        top: 48px;
-        left: 280px;
+        top: 145px;
+        left: 262px;
         z-index: 1;
     }
     .screens-sprite {
@@ -149,19 +189,6 @@ main {
     width: 100%;
     height: 640px;
     opacity: 1;
-}
-.cta-button {
-    background-color: #005189;
-    border: 0;
-    border-radius: 6px;
-    color: white;
-    display: inline-block;
-    font-size: 1.4em;
-    padding: .7em 3em;
-
-}
-.get-phone {
-    margin-bottom: 4em;
 }
 .fxos-help {
     .clearfix();
@@ -257,33 +284,33 @@ main {
 }
 @keyframes swipe {
     0% {
-        left: 280px;
+        left: 262px;
     }
     15% {
-        left: 280px;
+        left: 262px;
     }
     40% {
-        left: -30px;
+        left: -50px;
     }
     65% {
-        left: -337px;
+        left: -357px;
     }
     70% {
-        left: -30px;
+        left: -50px;
     }
     75% {
-        left: 280px;
+        left: 262px;
     }
     90% {
-        left: 589px;
+        left: 571px;
     }
 }
 @keyframes swipe-screens {
     0% {
-        background-position: -320px 0;
+        background-position: -310px 0;
     }
     15% {
-        background-position: -320px 0;
+        background-position: -310px 0;
     }
     40% {
         background-position: -621px 0;
@@ -295,7 +322,7 @@ main {
         background-position: -621px 0;
     }
     75% {
-        background-position: -320px 0;
+        background-position: -310px 0;
     }
     90% {
         background-position: 0 0;

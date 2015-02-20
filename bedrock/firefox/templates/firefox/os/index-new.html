@@ -29,11 +29,20 @@
 {% block content %}
   <main>
     <section class="fxos-hero-space">
-      <h1 class="huge">{{_('Firefox <span>OS<span>')}}</h1>
-      <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
-      <a href="" class="cta-button get-phone">{{_('Get a phone')}}</a>
+      <div class="phone">
+        <h1 class="huge">{{_('Firefox <span>OS<span>')}}</h1>
+        <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
+        <a href="" class="cta-button get-phone">{{_('Get a phone')}}</a>
+        <a href="#" id="interaction-trigger">
+          <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
+        </a>
+      </div>
 
       <div class="demo">
+        <h2>{{_('Give these a try')}}</h2>
+        <a href="#" id="close_demo" class="close">
+          <span>{{_('Close demo')}}</span>
+        </a>
         <div class="scroll-homescreen">
           <img src="{{ static('img/firefox/os-new/device.png') }}" width="304" height="637" alt="cellphone outlines" />
           <div class="homescreen"></div>
@@ -49,13 +58,6 @@
           <li><a href="#" id="scroll_homescreen">{{_('Scroll the homepage')}}</a></li>
           <li><a href="#" id="swipe_apps">{{_('Swipe between apps')}}</a></li>
         </ul>
-      </div>
-
-
-      <div class="phone">
-        <a href="#" id="interaction-trigger">
-          <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
-        </a>
       </div>
     </section>
     <section class="fxos-features">

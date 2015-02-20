@@ -7,22 +7,46 @@
 
     var $demoContainer = $('.demo');
     var $scrollHomescreen = $('.scroll-homescreen');
+    var $fxosHeroSpace = $('.fxos-hero-space');
+    var $phoneViewContainer = $('.phone');
+
+    /**
+     * Switches the state of the hero area from full to demo view.
+     */
+    function switchState(eventTarget) {
+        // entering demo mode, trim the container height
+        $fxosHeroSpace.toggleClass('trim-height');
+        // scales and fades the large phone image
+        $phoneViewContainer.toggleClass('scale');
+        // activate the demo area
+        $demoContainer.toggleClass('active');
+        // make the homescreen anim play
+        $scrollHomescreen.toggleClass('animate');
+    }
 
     $demoContainer.on('click', 'a', function(event) {
-        var eventTarget = event.target;
+        var targetID = event.target.id;
         var $swipeApps = $('.swipe-apps');
 
+        // close the demo view and switch back to default
+        if (targetID === 'close_demo') {
+            switchState();
+            return;
+        }
+
         // show the scroll homescreen animation
-        if (eventTarget.id === 'scroll_homescreen') {
+        if (targetID === 'scroll_homescreen') {
             $swipeApps.removeClass('animate').hide();
             // show homescreen and make it play
             $scrollHomescreen.addClass('animate').show();
+            return;
         }
 
-        if (eventTarget.id === 'swipe_apps') {
+        if (targetID === 'swipe_apps') {
             $scrollHomescreen.removeClass('animate').hide();
             // show swipe apps anim and make it play
             $swipeApps.addClass('animate').show();
+            return;
         }
     });
 
@@ -30,13 +54,7 @@
 
     $interactionTrigger.click(function(event) {
         event.preventDefault();
-
-        // scales and fades the large phone image
-        $(this).parents('.phone').addClass('scale');
-        // activate the demo area
-        $demoContainer.addClass('active');
-        // make the homescreen anim play
-        $scrollHomescreen.addClass('animate')
-    })
+        switchState();
+    });
 
 })(jQuery);
