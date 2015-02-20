@@ -24,29 +24,36 @@
         $scrollHomescreen.toggleClass('animate');
     }
 
+    /**
+     * Toggles the active-state class on all links in the container, essentially
+     * causing the newly active link to be set to active.
+     * @params {object} container - The container in which to find the links.
+     */
+    function setActiveButton(container) {
+        $('li > a', container).toggleClass('active-state');
+    }
+
     $demoContainer.on('click', 'a', function(event) {
-        var targetID = event.target.id;
+        var eventTarget = event.target;
+        var targetID = eventTarget.id;
         var $swipeApps = $('.swipe-apps');
 
-        // close the demo view and switch back to default
         if (targetID === 'close_demo') {
+            // close the demo view and switch back to default
             switchState();
-            return;
-        }
-
-        // show the scroll homescreen animation
-        if (targetID === 'scroll_homescreen') {
+        } else if (targetID === 'scroll_homescreen') {
+            // show the scroll homescreen animation
             $swipeApps.removeClass('animate').hide();
-            // show homescreen and make it play
             $scrollHomescreen.addClass('animate').show();
-            return;
-        }
 
-        if (targetID === 'swipe_apps') {
-            $scrollHomescreen.removeClass('animate').hide();
+            setActiveButton($demoContainer);
+
+        } else if (targetID === 'swipe_apps') {
             // show swipe apps anim and make it play
+            $scrollHomescreen.removeClass('animate').hide();
             $swipeApps.addClass('animate').show();
-            return;
+
+            setActiveButton($demoContainer);
         }
     });
 
