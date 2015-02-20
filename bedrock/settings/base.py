@@ -1351,7 +1351,7 @@ PIPELINE_JS = {
             'js/firefox/os/desktop.js',
             'js/firefox/os/have-it.js',
         ),
-        'output_filename': 'js/firefox_os-bundle.js',
+        'output_filename': 'js/firefox_os_new-bundle.js',
     },
     'firefox_os_ie9': {
         'source_filenames': (

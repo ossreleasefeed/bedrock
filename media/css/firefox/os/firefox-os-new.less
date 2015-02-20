@@ -58,28 +58,16 @@ main {
     transform: scale(.3, .3);
     opacity: 0;
 }
-.demo-phone-container {
+.demo {
     position: relative;
     width: 0;
     height: 0;
     opacity: 0;
-    transition: opacity 4s;
+    transition: opacity 5s;
     img {
         position: relative;
         left: 7px;
         z-index: 3;
-    }
-    img.wireframe-screens {
-        position: absolute;
-        top: 48px;
-        left: 280px;
-        z-index: 1;
-
-        animation-name: swipe;
-        animation-duration: 10s;
-        animation-delay: 2s;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-in-out;
     }
     ul {
         margin: 0;
@@ -107,26 +95,60 @@ main {
         }
     }
 }
-.active {
-    width: 100%;
-    height: 640px;
-    opacity: 1;
-}
+.homescreen,
 .screens-sprite {
     position: absolute;
     top: 48px;
     left: 590px;
-    background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
     clip: rect(0, 277px, 498px, 0);
     width: 277px;
     height: 498px;
     z-index: 2;
-
-    animation-name: swipe-screens;
-    animation-duration: 10s;
-    animation-delay: 2s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
+}
+.scroll-homescreen {
+    display: block;
+    .homescreen {
+        background: transparent url(/media/img/firefox/os-new/homescreen.png) 0 0 no-repeat;
+    }
+}
+.scroll-homescreen.animate {
+    .homescreen {
+        animation-name: scroll-homescreen;
+        animation-duration: 5s;
+        animation-delay: 2s;
+        animation-timing-function: ease-in-out;
+    }
+}
+.swipe-apps {
+    display: none;
+    img.wireframe-screens {
+        position: absolute;
+        top: 48px;
+        left: 280px;
+        z-index: 1;
+    }
+    .screens-sprite {
+        background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
+    }
+}
+.swipe-apps.animate {
+    img.wireframe-screens {
+        animation-name: swipe;
+        animation-duration: 10s;
+        animation-delay: 2s;
+        animation-timing-function: ease-in-out;
+    }
+    .screens-sprite {
+        animation-name: swipe-screens;
+        animation-duration: 10s;
+        animation-delay: 2s;
+        animation-timing-function: ease-in-out;
+    }
+}
+.active {
+    width: 100%;
+    height: 640px;
+    opacity: 1;
 }
 .cta-button {
     background-color: #005189;
@@ -222,6 +244,17 @@ main {
     }
 }
 
+@keyframes scroll-homescreen {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 0 -303px;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
 @keyframes swipe {
     0% {
         left: 280px;
