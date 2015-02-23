@@ -57,7 +57,7 @@
         }
     });
 
-    var $interactionTrigger = $('#interaction-trigger');
+    var $interactionTrigger = $('#trigger-homescreen');
 
     $interactionTrigger.click(function(event) {
         event.preventDefault();

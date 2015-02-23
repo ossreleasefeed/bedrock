@@ -40,6 +40,7 @@ main {
 /* Buttons */
 .cta-button {
     background-color: #005189;
+    margin: 0 auto 3em;
     border: 0;
     border-radius: 6px;
     color: white;
@@ -50,8 +51,8 @@ main {
 }
 .get-phone {
     display: block;
-    margin: 0 auto 3em;
     width: 13em;
+    min-width: 13em;
 }
 .fxos-hero-space {
     background: #0c99d5 url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
@@ -86,6 +87,59 @@ main {
     left: 192px;
     transform: scale(.3, .3);
     opacity: 0;
+}
+.phone-container {
+    position: relative;
+    display: inline-block;
+}
+.try-homescreen {
+    position: absolute;
+    top: 320px;
+    left: 210px;
+    background: transparent url(/media/img/firefox/os-new/icons/arrows-vertical.png) 0 0 no-repeat;
+    width: 134px;
+    height: 134px;
+}
+.try-swipe {
+    position: absolute;
+    top: 390px;
+    left: 950px;
+    background: transparent url(/media/img/firefox/os-new/icons/arrows-horizontal.png) 0 0 no-repeat;
+    width: 134px;
+    height: 134px;
+}
+.throbber {
+  position: absolute;
+  top: 75px;
+  left: 77px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  transform: scale(0, 0);
+
+  animation-name: throb;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.try-swipe .throbber {
+    top: 75px;
+    left: -43px;
+}
+.throb-one {
+  animation-delay: 0;
+}
+.throb-two {
+  animation-delay: 1s;
+}
+.throb-three {
+  animation-delay: 2s;
+}
+.throb-four {
+  animation-delay: 3s;
 }
 .demo {
     position: relative;
@@ -222,6 +276,7 @@ main {
         display: inline-block;
         width: 29%;
         margin: 0 5% 0 0;
+        vertical-align: top;
     }
     :last-child.feature {
         margin: 0;
@@ -296,6 +351,24 @@ ul.apps {
     100% {
         background-position: 0 0;
     }
+}
+@keyframes throb {
+  0% {
+    transform: scale(.2, .2);
+    opacity: .5;
+  }
+  25% {
+    transform: scale(.5, .5);
+    opacity: .5;
+  }
+  50% {
+    transform: scale(1, 1);
+    opacity: .3;
+  }
+  100% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
 }
 @keyframes swipe {
     0% {

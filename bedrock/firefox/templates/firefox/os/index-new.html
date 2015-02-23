@@ -33,15 +33,29 @@
         <h1 class="huge">{{_('Firefox <span>OS<span>')}}</h1>
         <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
         <a href="" class="cta-button get-phone">{{_('Get a phone')}}</a>
-        <a href="#" id="interaction-trigger">
+        <div href="#"  class="phone-container">
           <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
-        </a>
+
+          <a href="#" id="trigger-homescreen" class="try-homescreen">
+            <div class="throbber throb-one"></div>
+            <div class="throbber throb-two"></div>
+            <div class="throbber throb-three"></div>
+            <div class="throbber throb-four"></div>
+          </a>
+
+          <a href="#" id="trigger-homescreen" class="try-swipe">
+            <div class="throbber throb-one"></div>
+            <div class="throbber throb-two"></div>
+            <div class="throbber throb-three"></div>
+            <div class="throbber throb-four"></div>
+          </a>
+        </div>
       </div>
 
       <div class="demo">
         <h2>{{_('Give these a try')}}</h2>
         <a href="#" id="close_demo" class="close">
-          <span>{{_('Close demo')}}</span>
+          <span>{{_('Close')}}</span>
         </a>
         <div class="scroll-homescreen">
           <img src="{{ static('img/firefox/os-new/device.png') }}" width="304" height="637" alt="cellphone outlines" />
@@ -76,7 +90,7 @@
 
       <div class="feature">
         <img src="{{ static('img/firefox/os-new/icons/swipe_icon.png') }}" width="140" height="140" alt="{{_('interaction icon')}}" />
-        <h3>{{_('Swipe between apps')}}</h3>
+        <h3>{{_('Swipe&nbsp;between apps')}}</h3>
         <p>{{_('Access your recently used apps in a flash. Just swipe from the edge of the screen to cycle through all of your open apps.')}}</p>
       </div>
     </section>
@@ -125,14 +139,20 @@
       <a href="" class="cta-button marketplace">{{_('Go to the Marketplace')}}</a>
       <p class="footnote">{{_('* Pre-installed apps may vary by manufacturers and operators.')}}</p>
     </section>
+
+    {% set feed_links = firefox_os_feed_links(LANG) %}
+    {% if feed_links %}
     <section class="fxos-news">
       <h2>{{_('In the news')}}</h2>
       <p>{{_('See more')}}</p>
-      <!-- The below will be returned in the appropriate locale from the server -->
       <ul>
-        <li>Firefox OS Unlocks the Power of the Web as the Platform Across Expanding Ecosystem of Partners and Devices</li>
+        {% for link, title in feed_links %}
+        <li><a href="{{ link }}">{{ title }}</a></li>
+        {% endfor %}
       </ul>
     </section>
+    {% endif %}
+
     <section class="fxos-community">
       <img src="{{ static('img/firefox/os-new/mozilla_groupshot.png') }}" width="260" height="260" alt="{{_('Mozilla community photo')}}" />
       <h2>{{_('Powered by the Mozilla community')}}</h2>

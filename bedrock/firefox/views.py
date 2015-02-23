@@ -19,6 +19,7 @@ import waffle
 from funfactory.helpers import static
 from funfactory.urlresolvers import reverse
 from lib import l10n_utils
+from lib.l10n_utils.dotlang import lang_file_is_active
 
 from bedrock.releasenotes import version_re
 from bedrock.firefox.forms import SMSSendForm
@@ -546,7 +547,7 @@ def fxos(request):
     old_home = 'firefox/os/index.html'
     new_home = 'firefox/os/index-new.html'
 
-    if l10n_utils.template_is_active(new_home, locale):
+    if lang_file_is_active(new_home, locale):
         return l10n_utils.render(request, new_home)
     else:
         return l10n_utils.render(request, old_home)
