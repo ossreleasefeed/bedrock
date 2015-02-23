@@ -14,6 +14,22 @@
     var $swipeApps = $('.swipe-apps');
 
     /**
+     * Toggles the active-state class on all links in the container, essentially
+     * causing the newly active link to be set to active.
+     * @params {object} container - The container in which to find the links.
+     * @params {object} [button] - An optional button argument to specify which
+     *                             element to set as active.
+     */
+    function setActiveButton(container, button) {
+        if (button) {
+            $('li > a', container).removeClass('active-state');
+            button.addClass('active-state');
+        } else {
+            $('li > a', container).toggleClass('active-state');
+        }
+    }
+
+    /**
      * Switches the state of the hero area from full to demo view.
      * @param {object} [demo] - The demo to enable and animate
      */
@@ -32,16 +48,9 @@
         // if a demo was specified show and enable animation
         if (demo) {
             demo.show().toggleClass('animate');
+            console.log($(demo.data('button')));
+            setActiveButton($demoContainer, $(demo.data('button')));
         }
-    }
-
-    /**
-     * Toggles the active-state class on all links in the container, essentially
-     * causing the newly active link to be set to active.
-     * @params {object} container - The container in which to find the links.
-     */
-    function setActiveButton(container) {
-        $('li > a', container).toggleClass('active-state');
     }
 
     $phoneViewContainer.on('click', 'a', function(event) {
@@ -58,7 +67,7 @@
     $demoContainer.on('click', 'a', function(event) {
 
         event.preventDefault();
-        var targetID = event.target.id;
+        var targetID = event.currentTarget.id;
 
         if (targetID === 'close-demo') {
             // close the demo view and switch back to default
