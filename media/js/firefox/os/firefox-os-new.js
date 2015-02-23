@@ -6,22 +6,33 @@
     'use strict';
 
     var $demoContainer = $('.demo');
-    var $scrollHomescreen = $('.scroll-homescreen');
     var $fxosHeroSpace = $('.fxos-hero-space');
     var $phoneViewContainer = $('.phone');
 
+    var $stage = $('.stage');
+    var $scrollHomescreen = $('.scroll-homescreen');
+    var $swipeApps = $('.swipe-apps');
+
     /**
      * Switches the state of the hero area from full to demo view.
+     * @param {object} [demo] - The demo to enable and animate
      */
-    function switchState(eventTarget) {
+    function switchState(demo) {
+        // hide both demos and ensure animation is disabled
+        $stage.hide();
+        $stage.removeClass('animate');
+
         // entering demo mode, trim the container height
         $fxosHeroSpace.toggleClass('trim-height');
         // scales and fades the large phone image
         $phoneViewContainer.toggleClass('scale');
         // activate the demo area
         $demoContainer.toggleClass('active');
-        // make the homescreen anim play
-        $scrollHomescreen.toggleClass('animate');
+
+        // if a demo was specified show and enable animation
+        if (demo) {
+            demo.show().toggleClass('animate');
+        }
     }
 
     /**
@@ -33,35 +44,36 @@
         $('li > a', container).toggleClass('active-state');
     }
 
-    $demoContainer.on('click', 'a', function(event) {
-        var eventTarget = event.target;
-        var targetID = eventTarget.id;
-        var $swipeApps = $('.swipe-apps');
+    $phoneViewContainer.on('click', 'a', function(event) {
 
-        if (targetID === 'close_demo') {
-            // close the demo view and switch back to default
-            switchState();
-        } else if (targetID === 'scroll_homescreen') {
-            // show the scroll homescreen animation
-            $swipeApps.removeClass('animate').hide();
-            $scrollHomescreen.addClass('animate').show();
+        var targetID = event.currentTarget.id;
 
-            setActiveButton($demoContainer);
-
-        } else if (targetID === 'swipe_apps') {
-            // show swipe apps anim and make it play
-            $scrollHomescreen.removeClass('animate').hide();
-            $swipeApps.addClass('animate').show();
-
-            setActiveButton($demoContainer);
+        if (targetID !== '') {
+            event.preventDefault();
+            var demo = targetID === 'trigger-swipe' ? $swipeApps : $scrollHomescreen;
+            switchState(demo);
         }
     });
 
-    var $interactionTrigger = $('#trigger-homescreen');
+    $demoContainer.on('click', 'a', function(event) {
 
-    $interactionTrigger.click(function(event) {
         event.preventDefault();
-        switchState();
+        var targetID = event.target.id;
+
+        if (targetID === 'close-demo') {
+            // close the demo view and switch back to default
+            switchState();
+        } else if (targetID === 'scroll-homescreen') {
+            // show the scroll homescreen animation
+            $swipeApps.hide().removeClass('animate');
+            $scrollHomescreen.show().addClass('animate');
+            setActiveButton($demoContainer);
+        } else if (targetID === 'swipe-apps') {
+            // show swipe apps anim and make it play
+            $scrollHomescreen.hide().removeClass('animate');
+            $swipeApps.show().addClass('animate');
+            setActiveButton($demoContainer);
+        }
     });
 
 })(jQuery);
