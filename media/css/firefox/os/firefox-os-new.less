@@ -262,6 +262,10 @@ main {
 .fxos-help {
     background-color: #0c99d5;
     color: white;
+    a:link,
+    a:visited {
+        color: white;
+    }
 }
 .fxos-apps {
     padding: 5em 0;
@@ -359,6 +363,95 @@ ul.apps {
     li {
         display: inline-block;
         margin: 0 20px 40px 60px;
+    }
+}
+
+// email signup form no-JS styles
+#email-form-content {
+    h3 {
+        .font-size(26px);
+        line-height: 32px;
+        text-shadow: none;
+    }
+    header {
+        display: none;
+    }
+}
+
+.footer-newsletter-form {
+    width: @widthDesktop - (@gridGutterWidth * 4);
+    margin: 0 auto @baseLine auto;
+    background: #fff;
+    border: 0;
+    box-shadow: none;
+    a {
+        color: #47b8e4;
+        text-decoration: underline;
+    }
+}
+
+.newsletter-form.thank {
+    border: none;
+    box-shadow: none;
+}
+
+#footer-email-errors {
+    width: @widthDesktop - (@gridGutterWidth * 2);
+    margin: 0 auto;
+}
+
+// JS specific styles for signup and get phone modal content
+.js {
+    #signup-toggle-icon {
+        position: fixed;
+        top: (@baseLine + 80); // @baseLine below height of masthead
+        right: @baseLine;
+        z-index: 1000;
+        width: 28px;
+        height: 28px;
+        background: url(/media/img/firefox/os/signup-slide-toggle.png) left top no-repeat;
+        text-indent: 105%;
+        white-space: nowrap;
+        overflow: hidden;
+        @transition: right, box-shadow linear 0.25s;
+        .transition(@transition);
+        &.form-open {
+          right: 300px;
+          background-position: left -28px;
+        }
+    }
+
+    #signup-toggle-icon:hover,
+    #signup-toggle-icon:focus {
+        outline: none;
+        .transition(box-shadow .5s linear);
+        .box-shadow(0 0 20px 0px rgb(255,255,255));
+    }
+
+    #email-form-wrapper {
+        display: none;
+        width: 100%;
+    }
+
+    #email-form-content {
+        header {
+          display: block;
+        }
+    }
+
+    .footer-newsletter-form {
+        width: 100%;
+        background: transparent;
+        margin: 0 auto;
+        #form-details, .form-details {
+          display: block;
+        }
+        h3 {
+          margin: 0 10px 10px 10px;
+        }
+        .error {
+          border: 1px solid rgb(175,50,50);
+        }
     }
 }
 
