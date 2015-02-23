@@ -35,7 +35,6 @@
      */
     function switchState(demo) {
         // hide both demos and ensure animation is disabled
-        $stage.hide();
         $stage.removeClass('animate');
 
         // entering demo mode, trim the container height
@@ -47,8 +46,7 @@
 
         // if a demo was specified show and enable animation
         if (demo) {
-            demo.show().toggleClass('animate');
-            console.log($(demo.data('button')));
+            demo.addClass('animate');
             setActiveButton($demoContainer, $(demo.data('button')));
         }
     }
@@ -74,14 +72,14 @@
             switchState();
         } else if (targetID === 'scroll-homescreen') {
             // show the scroll homescreen animation
-            $swipeApps.hide().removeClass('animate');
-            $scrollHomescreen.show().addClass('animate');
+            $swipeApps.removeClass('animate');
             setActiveButton($demoContainer);
+            $scrollHomescreen.addClass('animate');
         } else if (targetID === 'swipe-apps') {
             // show swipe apps anim and make it play
-            $scrollHomescreen.hide().removeClass('animate');
-            $swipeApps.show().addClass('animate');
+            $scrollHomescreen.removeClass('animate');
             setActiveButton($demoContainer);
+            $swipeApps.addClass('animate');
         }
     });
 

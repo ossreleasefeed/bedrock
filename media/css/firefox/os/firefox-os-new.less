@@ -200,6 +200,11 @@ main {
         }
     }
 }
+.active {
+    width: 100%;
+    height: 640px;
+    opacity: 1;
+}
 .homescreen,
 .screens-sprite {
     position: absolute;
@@ -216,14 +221,6 @@ main {
         background: transparent url(/media/img/firefox/os-new/homescreen.png) 0 0 no-repeat;
     }
 }
-.scroll-homescreen.animate {
-    .homescreen {
-        animation-name: scroll-homescreen;
-        animation-duration: 5s;
-        animation-delay: 1s;
-        animation-timing-function: ease-in-out;
-    }
-}
 .swipe-apps {
     display: none;
     img.wireframe-screens {
@@ -235,25 +232,6 @@ main {
     .screens-sprite {
         background: transparent url(/media/img/firefox/os-new/screens-sprite.png) -310px 0 no-repeat;
     }
-}
-.swipe-apps.animate {
-    img.wireframe-screens {
-        animation-name: swipe;
-        animation-duration: 8s;
-        animation-delay: 1s;
-        animation-timing-function: ease-in-out;
-    }
-    .screens-sprite {
-        animation-name: swipe-screens;
-        animation-duration: 8s;
-        animation-delay: 1s;
-        animation-timing-function: ease-in-out;
-    }
-}
-.active {
-    width: 100%;
-    height: 640px;
-    opacity: 1;
 }
 .fxos-help {
     .clearfix();
@@ -341,17 +319,77 @@ ul.apps {
     }
 }
 
-@keyframes scroll-homescreen {
-    0% {
-        background-position: 0 0;
+.scroll-homescreen.animate {
+    display: block;
+
+    @keyframes scroll-homescreen {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 0 -303px;
+        }
+        100% {
+            background-position: 0 0;
+        }
     }
-    50% {
-        background-position: 0 -303px;
-    }
-    100% {
-        background-position: 0 0;
+
+    .homescreen {
+        .animation(scroll-homescreen 5s ease 1s 1 normal forwards);
     }
 }
+.swipe-apps.animate {
+    display: block;
+
+    @keyframes swipe {
+        15% {
+            left: 262px;
+        }
+        40% {
+            left: -50px;
+        }
+        65% {
+            left: -357px;
+        }
+        70% {
+            left: -50px;
+        }
+        75% {
+            left: 262px;
+        }
+        90% {
+            left: 571px;
+        }
+    }
+    @keyframes swipe-screens {
+        15% {
+            background-position: -310px 0;
+        }
+        40% {
+            background-position: -621px 0;
+        }
+        65% {
+            background-position: -926px 0;
+        }
+        70% {
+            background-position: -621px 0;
+        }
+        75% {
+            background-position: -310px 0;
+        }
+        90% {
+            background-position: 0 0;
+        }
+    }
+
+    img.wireframe-screens {
+        .animation(swipe 8s ease 1s 1 normal forwards);
+    }
+    .screens-sprite {
+        .animation(swipe-screens 8s ease 1s 1 normal forwards);
+    }
+}
+
 @keyframes throb {
   0% {
     transform: scale(.2, .2);
@@ -369,50 +407,4 @@ ul.apps {
     transform: scale(1.5, 1.5);
     opacity: 0;
   }
-}
-@keyframes swipe {
-    0% {
-        left: 262px;
-    }
-    15% {
-        left: 262px;
-    }
-    40% {
-        left: -50px;
-    }
-    65% {
-        left: -357px;
-    }
-    70% {
-        left: -50px;
-    }
-    75% {
-        left: 262px;
-    }
-    90% {
-        left: 571px;
-    }
-}
-@keyframes swipe-screens {
-    0% {
-        background-position: -310px 0;
-    }
-    15% {
-        background-position: -310px 0;
-    }
-    40% {
-        background-position: -621px 0;
-    }
-    65% {
-        background-position: -926px 0;
-    }
-    70% {
-        background-position: -621px 0;
-    }
-    75% {
-        background-position: -310px 0;
-    }
-    90% {
-        background-position: 0 0;
-    }
 }
