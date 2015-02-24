@@ -7,6 +7,15 @@
     background-color: #0C99D5;
     width: 1400px;
 }
+h1 {
+    background: transparent url(/media/img/firefox/os-new/fxos_wordmark.png) 0 0 no-repeat;
+    margin: 0px auto 30px auto;
+    width: 620px;
+    height: 124px;
+    span {
+        .visually-hidden();
+    }
+}
 h2 {
     .open-sans-light();
     font-size: 3rem;
@@ -15,32 +24,22 @@ main {
     margin: 0 auto;
     width: 1400px;
     text-align: center;
-    h1 {
-        &.huge {
-            color: white;
-            font-weight: 700;
-        }
-        span {
-            font-weight: normal;
-        }
-    }
     h2, h3 {
         color: white;
+        text-shadow: none;
     }
     .tagline {
-        margin-bottom: .7em;
         .open-sans-light();
-        font-size: 2rem;
+        color: #bee1f5;
+        margin-bottom: 40px;
+        font-size: 3em;
         letter-spacing: -0.01em;
-    }
-    ul {
-        text-align: center;
     }
 }
 /* Buttons */
 .cta-button {
     background-color: #005189;
-    margin: 0 auto 3em;
+    margin: 0 auto 80px;
     border: 0;
     border-radius: 6px;
     color: white;
@@ -48,6 +47,11 @@ main {
     font-size: 1.4em;
     padding: .7em 3em;
 
+}
+.cta-button:hover {
+    background-color: #005da5;
+    color: white;
+    text-decoration: none;
 }
 .get-phone {
     display: block;
@@ -77,9 +81,6 @@ main {
     margin: 0 auto;
     opacity: 1;
     transition: all .7s;
-    h1 {
-        margin-top: .5em;
-    }
 }
 .scale {
     position: absolute;
@@ -156,20 +157,6 @@ main {
         left: 7px;
         z-index: 3;
     }
-    .active-state {
-        background-color: #e14164;
-    }
-    .close {
-        position: absolute;
-        top: -30px;
-        right: 20px;
-        background: transparent url(/media/img/firefox/os-new/icons/close.png) 0 0 no-repeat;
-        width: 42px;
-        height: 42px;
-        span {
-            .visually-hidden();
-        }
-    }
 }
 .demo,
 .fxos-apps {
@@ -181,9 +168,10 @@ main {
         list-style: none;
         li {
             display: inline;
-            margin: 0;
+            margin-left: 0;
             &:first-child a {
                 border: 2px solid #71c4ea;
+                border-right: 0;
                 border-radius: 6px 0 0 6px;
             }
             &:last-child a {
@@ -193,10 +181,35 @@ main {
             }
         }
         a {
+            padding: .5em 1.5em;
+        }
+    }
+    a {
+        &:link,
+        &:visited {
             display: inline-block;
             background-color: #005189;
             color: white;
-            padding: .5em 2em;
+            border: 2px solid #71c4ea;
+        }
+        &:hover {
+            background-color: #005da5;
+            text-decoration: none;
+        }
+        &.close {
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            background: transparent url(/media/img/firefox/os-new/icons/close.png) 0 0 no-repeat;
+            border: 0;
+            width: 42px;
+            height: 42px;
+            span {
+                .visually-hidden();
+            }
+        }
+        &.active-state {
+            background-color: #e14164;
         }
     }
 }
@@ -235,26 +248,33 @@ main {
 }
 .fxos-features {
     background-color: white;
-    padding: 5em 3em;
+    padding: 80px 3em 100px;
     .clearfix();
-    h2, h3 {
-        color: #333;
-        margin-bottom: .5em;
-    }
     h2 {
-        margin-bottom: 1.2em;
+        margin-bottom: 40px;
     }
     h3 {
-        margin-top: 1em;
+        margin-top: 20px;
     }
     .feature {
         display: inline-block;
         width: 29%;
         margin: 0 5% 0 0;
         vertical-align: top;
+        p {
+            color: #999;
+            font-size: 1.1em;
+        }
     }
     :last-child.feature {
         margin: 0;
+    }
+}
+.fxos-features,
+.fxos-community {
+    h2,
+    h3 {
+        color: #56565a;
     }
 }
 .fxos-apps,
@@ -268,15 +288,19 @@ main {
     }
 }
 .fxos-apps {
-    padding: 5em 0;
+    padding: 80px 0 100px;
     h2,
     .app-group-selector {
-        margin-bottom: 5rem;
+        margin-bottom: 40px;
     }
 }
 .fxos-marketplace {
+    h2 {
+        margin-bottom: 30px;
+    }
     p {
-        margin-bottom: 2em;
+        color: #BEE1F5;
+        margin-bottom: 60px;
         .open-sans-light();
         font-size: 2em;
     }
@@ -287,8 +311,17 @@ main {
     }
     span {
         display: block;
+        margin: 20px 0 60px;
+        font-size: 1.2em;
+    }
+    .marketplace {
+        background: #005189 url(/media/img/firefox/os-new/icons/marketplace_glyph.png) 15px 9px no-repeat;
+        margin-bottom: 60px;
+        padding-left: 80px;
     }
     .footnote {
+        color: #bee1f5;
+        .open-sans-italic();
         font-size: .9em;
     }
 }
@@ -298,11 +331,9 @@ main {
 .fxos-community {
     background-color: white;
     color: #333;
-    padding: 5em 0;
-    h2 {
-        color: #333;
-    }
+    padding: 80px 0;
     p {
+        color: #999;
         padding: 0 9em;
         .open-sans-light();
         font-size: 1.7em;
@@ -334,18 +365,6 @@ main {
         li {
             margin-left: 0;
             line-height: 2;
-        }
-    }
-}
-.app-group-selector {
-    li {
-        display: inline;
-        a:link,
-        a:visited {
-            display: inline-block;
-            background-color: #005189;
-            color: white;
-            border: 2px solid #71c4ea;
         }
     }
 }
