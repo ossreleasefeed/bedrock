@@ -102,6 +102,11 @@ main {
     position: relative;
     display: inline-block;
 }
+.try-homescreen,
+.try-swipe {
+    display: none;
+}
+
 .try-homescreen {
     position: absolute;
     top: 320px;
@@ -669,6 +674,17 @@ ul.apps {
 /****************************************************************************/
 // @Mobile layout: 320px
 @media only screen and (max-width: @breakTablet) {
+    main {
+        h1 {
+            background: transparent url(/media/img/firefox/os-new/fxos_wordmark320.png) 0 0 no-repeat;
+            margin: 0px auto;
+            width: 320px;
+            height: 90px;
+        }
+        .tagline {
+            font-size: 1.7em;
+        }
+    }
     .content-wrapper {
         margin: 0 auto;
         width: 320px;
