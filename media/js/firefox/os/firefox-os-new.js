@@ -84,7 +84,7 @@
         }
     });
 
-    var COUNTRY_CODE = 'za';
+    var COUNTRY_CODE = '';
     /*
     * Get country code via geo-ip lookup
     */
@@ -197,7 +197,7 @@
     }
 
     $script('//geo.mozilla.org/country.js', function() {
-        //getGeoLocation();
+        getGeoLocation();
         setNewsletterDefaults();
         setPartnerContent();
     });
