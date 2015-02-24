@@ -71,7 +71,7 @@ main {
     background: #0c99d5 url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
     color: white;
     padding-top: 4em;
-    height: 1250px;
+    height: 1125px;
     overflow: hidden;
     transition: height .5s;
     ul {
@@ -355,7 +355,7 @@ main {
     padding: 80px 0;
     p {
         color: #999;
-        padding: 0 9em;
+        padding: 0 10%;
         .open-sans-light();
         font-size: 1.7em;
     }
@@ -391,7 +391,7 @@ main {
 }
 ul.apps {
     margin: 0 auto;
-    width: 1100px;
+    width: 90%;
     li {
         display: inline-block;
         margin: 0 0 40px 70px;
@@ -399,7 +399,7 @@ ul.apps {
 }
 .apps-marketplace {
     margin: 0 auto;
-    width: 1100px;
+    width: 90%;
     li {
         display: inline-block;
         margin: 0 20px 40px 60px;
@@ -587,4 +587,88 @@ ul.apps {
     transform: scale(1.5, 1.5);
     opacity: 0;
   }
+}
+
+/****************************************************************************/
+// @Tablet Layout: 760px
+@media only screen and (min-width: @breakTablet) and (max-width: 1024px) {
+    .content-wrapper {
+        margin: 0 auto;
+        width: 740px;
+    }
+    .phone-container {
+        img {
+            width: 680px;
+            height: 1429px;
+        }
+    }
+    .try-homescreen {
+        top: 200px;
+        left: 110px;
+    }
+    .try-swipe {
+        top: 230px;
+        left: 655px;
+    }
+    .demo,
+    .fxos-apps {
+        ul {
+            a {
+                padding: .5em 1.5em;
+            }
+        }
+        .app-group-selector {
+            a {
+                padding: .5em 1.5em;
+            }
+        }
+    }
+    .apps-marketplace {
+        width: 100%;
+    }
+    ul {
+        .apps {
+            li {
+                margin: 0 10px 40px 10px;
+            }
+        }
+    }
+    .fxos-help {
+        .help {
+            width: 240px;
+            &:first-child {
+                margin: 0;
+            }
+        }
+    }
+}
+
+/****************************************************************************/
+// @Mobile layout: 320px
+@media only screen and (max-width: @breakTablet) {
+    .content-wrapper {
+        margin: 0 auto;
+        width: 320px;
+    }
+    .phone-container {
+        img {
+            width: 300px;
+            height: 630px;
+        }
+    }
+}
+
+/****************************************************************************/
+// @Wide @mobile layout: 480px
+@media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
+    .content-wrapper {
+        margin: 0 auto;
+        width: 480px;
+    }
+    .phone-container {
+        img {
+            width: 460px;
+            height: 966px;
+        }
+    }
 }
