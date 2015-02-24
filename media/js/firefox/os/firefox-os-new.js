@@ -55,7 +55,8 @@
 
         var targetID = event.currentTarget.id;
 
-        if (targetID !== '') {
+        // only handle clicks for the demo triggers
+        if (targetID.indexOf('trigger') > -1) {
             event.preventDefault();
             var demo = targetID === 'trigger-swipe' ? $swipeApps : $scrollHomescreen;
             switchState(demo);
@@ -81,6 +82,124 @@
             setActiveButton($demoContainer);
             $swipeApps.addClass('animate');
         }
+    });
+
+    var COUNTRY_CODE = 'za';
+    /*
+    * Get country code via geo-ip lookup
+    */
+    function getGeoLocation () {
+        console.log('get geo location');
+        try {
+            console.log('COUNTRY_CODE', geoip_country_code());
+            COUNTRY_CODE = geoip_country_code().toLowerCase();
+        } catch (e) {
+            console.log('error', e);
+            COUNTRY_CODE = '';
+        }
+    }
+
+    /*
+    * Set newsletter default options based on cc
+    */
+    function setNewsletterDefaults () {
+        var countrySelection = $('#id_country option[value='+ COUNTRY_CODE +']');
+
+        // if cc is in the country option list, select it
+        // remove the default selection first
+        if (countrySelection.length !== 0) {
+            $('#id_country option:selected').prop('selected', false);
+            countrySelection.prop('selected', true);
+        }
+
+        // for ve and co set the default language to es
+        // other countries auto select based on cc
+        switch(COUNTRY_CODE) {
+        case 've':
+            $('#id_lang option[value="es"]').prop('selected', true);
+            break;
+        case 'co':
+            $('#id_lang option[value="es"]').prop('selected', true);
+            break;
+        default:
+            $('#id_lang option[value="' + COUNTRY_CODE + '"]').prop('selected', true);
+        }
+    }
+
+    window.trackGAEvent = function (eventsArray, callback) {
+        if (!pause_ga_tracking) {
+            var timer = null;
+            var hasCallback = typeof(callback) == 'function';
+            var gaCallback = function () {
+                clearTimeout(timer);
+                callback();
+            };
+
+            if (typeof(window._gaq) == 'object') {
+                if (hasCallback) {
+                    timer = setTimeout(gaCallback, 500);
+                    window._gaq.push(eventsArray, gaCallback);
+                } else {
+                    window._gaq.push(eventsArray);
+                }
+            } else if (hasCallback) {
+                callback();
+            }
+        }
+    };
+
+    /*
+    * Track telecom provider link clicks/page exits in Google Analytics
+    */
+    function trackProviderExit (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var href = this.href;
+
+        var callback = function () {
+            window.location = href;
+        };
+
+        trackGAEvent(['_trackEvent', 'FxOs Consumer Page', 'Get A Phone Exit', $this.text()], callback);
+    }
+
+    /*
+    * Set page specific content relating to geo for partner data etc
+    */
+    function setPartnerContent () {
+
+        var $provider = $('#provider-links').find('.provider[data-country="' + COUNTRY_CODE + '"]');
+
+        // if there are partners available, update UI
+        if (COUNTRY_CODE !== '' && $provider.length > 0) {
+            // show get phone calls to action
+            $('#primary-cta-phone').removeClass('hidden');
+
+            // if country has more than one provider, show the multi intro text
+            if ($provider.find('li').length > 1) {
+                $('#provider-text-single').hide();
+                $('#provider-text-multi').show();
+            }
+
+            // show the provider applicable for the user country.
+            $provider.show();
+
+            // setup GA event tracking on telecom provider exit links
+            $('#provider-links a').on('click', trackProviderExit);
+
+            // persistent pencil icon is distracting/obtrusive on small screens
+            if ($window.width() > 480) {
+                $('#signup-toggle-icon').fadeIn();
+            }
+        } else {
+            $('#primary-cta-signup').removeClass('hidden');
+        }
+    }
+
+    $script('//geo.mozilla.org/country.js', function() {
+        //getGeoLocation();
+        setNewsletterDefaults();
+        setPartnerContent();
     });
 
 })(jQuery);

@@ -33,7 +33,10 @@
         <div class="phone">
           <h1><span>{{_('Firefox <span>OS<span>')}}</span></h1>
           <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
-          <a href="" class="cta-button get-phone">{{_('Get a phone')}}</a>
+
+          <a id="primary-cta-signup" href="#email-form-wrapper" class="cta-button get-newsletter hidden newsletter-signup-toggle">{{_('Sign me up')}}</a>
+          <a id="primary-cta-phone" href="#get-device" class="cta-button get-phone hidden">{{_('Get a phone')}}</a>
+
           <div href="#"  class="phone-container">
             <img src="{{ static('img/firefox/os-new/device_large.png') }}" width="990" height="2080" alt="{{_('Firefox OS device illustration')}}" />
 
@@ -199,6 +202,8 @@
     </section>
   </main>
 {% endblock %}
+
+{% include '/firefox/os/_get_device.html' %}
 
 {% block email_form %}
   <div id="email-form-wrapper">
