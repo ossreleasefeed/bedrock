@@ -8,22 +8,22 @@
     width: 100%;
     padding-bottom: 0;
 }
-h1 {
-    background: transparent url(/media/img/firefox/os-new/fxos_wordmark.png) 0 0 no-repeat;
-    margin: 0px auto 30px auto;
-    width: 620px;
-    height: 124px;
-    span {
-        .visually-hidden();
-    }
-}
-h2 {
-    .open-sans-light();
-    font-size: 3rem;
-}
 main {
     margin: 0 auto;
     text-align: center;
+    h1 {
+        background: transparent url(/media/img/firefox/os-new/fxos_wordmark.png) 0 0 no-repeat;
+        margin: 0px auto 30px auto;
+        width: 620px;
+        height: 124px;
+        span {
+            .visually-hidden();
+        }
+    }
+    h2 {
+        .open-sans-light();
+        font-size: 3rem;
+    }
     h2, h3 {
         color: white;
         text-shadow: none;
@@ -177,7 +177,7 @@ main {
         list-style: none;
         li {
             display: inline;
-            margin-left: 0;
+            margin-left: -6px;
             &:first-child a {
                 border: 2px solid #71c4ea;
                 border-right: 0;
@@ -185,12 +185,18 @@ main {
             }
             &:last-child a {
                 border: 2px solid #71c4ea;
-                border-left: 0;
                 border-radius: 0 6px 6px 0;
             }
         }
         a {
-            padding: .5em 1.5em;
+            padding: .5em 2.5em;
+        }
+    }
+    .app-group-selector {
+        li {
+            &:last-child a {
+                border-left: 0;
+            }
         }
     }
     a {
@@ -487,6 +493,10 @@ ul.apps {
           border: 1px solid rgb(175,50,50);
         }
     }
+}
+// override
+#colophon {
+    margin: 0;
 }
 
 .scroll-homescreen.animate {
