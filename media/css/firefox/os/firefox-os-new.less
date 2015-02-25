@@ -71,7 +71,7 @@ main {
     background: #0c99d5 url(/media/img/firefox/os-new/site-bg.png) 0 0 no-repeat;
     color: white;
     padding-top: 4em;
-    height: 1125px;
+    height: 1085px;
     overflow: hidden;
     transition: height .5s;
     ul {
@@ -101,6 +101,11 @@ main {
 .phone-container {
     position: relative;
     display: inline-block;
+    img {
+        width: 1030px;
+        height: 782px;
+        transition: all 1s;
+    }
 }
 .try-homescreen,
 .try-swipe {
@@ -617,6 +622,34 @@ ul.apps {
   }
 }
 
+@media only screen and (max-width: 1600px) {
+    main {
+        h1 {
+            background: transparent url(/media/img/firefox/os-new/fxos_wordmark420.png) 0 0 no-repeat;
+            margin: 0px auto 30px auto;
+            width: 420px;
+            height: 84px;
+        }
+        .tagline {
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+    }
+    .cta-button {
+        margin-bottom: 50px;
+    }
+    .fxos-hero-space {
+        padding-top: 2em;
+        height: 755px;
+    }
+    .phone-container {
+        img {
+            width: 800px;
+            height: 607px;
+        }
+    }
+}
+
 /****************************************************************************/
 // @Tablet Layout: 760px
 @media only screen and (min-width: @breakTablet) and (max-width: 1024px) {
@@ -627,7 +660,7 @@ ul.apps {
     .phone-container {
         img {
             width: 680px;
-            height: 1429px;
+            height: 516px;
         }
     }
     .try-homescreen {
@@ -682,17 +715,21 @@ ul.apps {
             height: 90px;
         }
         .tagline {
-            font-size: 1.7em;
+            font-size: 2em;
         }
     }
     .content-wrapper {
         margin: 0 auto;
         width: 320px;
     }
+    .fxos-hero-space {
+        padding-top: 2em;
+        height: 570px;
+    }
     .phone-container {
         img {
             width: 300px;
-            height: 630px;
+            height: 228px;
         }
     }
 }
@@ -707,7 +744,7 @@ ul.apps {
     .phone-container {
         img {
             width: 460px;
-            height: 966px;
+            height: 349px;
         }
     }
 }
