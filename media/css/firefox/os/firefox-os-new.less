@@ -622,18 +622,11 @@ ul.apps {
   }
 }
 
+/****************************************************************************/
+// @High res monitor 1600x1050
 @media only screen and (max-width: 1600px) {
-    main {
-        h1 {
-            background: transparent url(/media/img/firefox/os-new/fxos_wordmark420.png) 0 0 no-repeat;
-            margin: 0px auto 30px auto;
-            width: 420px;
-            height: 84px;
-        }
-        .tagline {
-            margin-bottom: 30px;
-            font-size: 2.5em;
-        }
+    .content-wrapper {
+        width: 1200px;
     }
     .cta-button {
         margin-bottom: 50px;
@@ -651,10 +644,38 @@ ul.apps {
 }
 
 /****************************************************************************/
+// @19" monitor typical resolution 1440x900
+@media only screen and (max-width: 1440px) {
+    .content-wrapper {
+        width: 1000px;
+    }
+    .fxos-features {
+        .feature {
+            width: 24%;
+        }
+    }
+    ul {
+        &.apps {
+            li {
+                margin: 0 35px 40px 35px;
+            }
+        }
+    }
+    .fxos-help {
+        .help {
+            width: 300px;
+            &:first-child {
+                margin-left: 80px;
+            }
+        }
+    }
+}
+
+/****************************************************************************/
 // @14" Notebook / 15.6" Laptop / 18.5" monitor 1366x760
 @media only screen and (max-width: 1366px) {
     .content-wrapper {
-        width: 1324px;
+        width: 1000px;
     }
     .fxos-features {
         .feature {
@@ -674,8 +695,7 @@ ul.apps {
 // @Landscape Layout: 1024x768
 @media only screen and (max-width: 1024px) {
     .content-wrapper {
-        margin: 0 auto;
-        width: 1000px;
+        width: 800px;
     }
     .phone-container {
         img {
@@ -684,9 +704,6 @@ ul.apps {
         }
     }
     .fxos-features {
-        .content-wrapper {
-            width: 960px;
-        }
         .feature {
             width: 29%;
         }
@@ -709,7 +726,6 @@ ul.apps {
 // @Portrait layout: 768x1024
 @media only screen and (max-width: 768px) {
     .content-wrapper {
-        margin: 0 auto;
         width: 740px;
     }
     .phone-container {
@@ -771,7 +787,6 @@ ul.apps {
         }
     }
     .content-wrapper {
-        margin: 0 auto;
         width: 320px;
     }
     .fxos-hero-space {
@@ -859,7 +874,6 @@ ul.apps {
 // @Wide @mobile layout: 480px
 @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
     .content-wrapper {
-        margin: 0 auto;
         width: 480px;
     }
     .phone-container {
