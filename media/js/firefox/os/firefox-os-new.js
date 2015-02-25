@@ -110,7 +110,7 @@
         }
     });
 
-    var COUNTRY_CODE = 'de';
+    var COUNTRY_CODE = '';
     /*
     * Get country code via geo-ip lookup
     */
@@ -223,7 +223,7 @@
     }
 
     $script('//geo.mozilla.org/country.js', function() {
-        //getGeoLocation();
+        getGeoLocation();
         setNewsletterDefaults();
         setPartnerContent();
     });
