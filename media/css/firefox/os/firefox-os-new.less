@@ -398,7 +398,7 @@ main {
 }
 .fxos-help {
     margin: 0 auto;
-    padding: 3em 0;
+    padding: 80px 0;
     .clearfix();
     .help {
         display: inline-block;
@@ -651,8 +651,63 @@ ul.apps {
 }
 
 /****************************************************************************/
-// @Tablet Layout: 760px
-@media only screen and (min-width: @breakTablet) and (max-width: 1024px) {
+// @14" Notebook / 15.6" Laptop / 18.5" monitor 1366x760
+@media only screen and (max-width: 1366px) {
+    .content-wrapper {
+        width: 1324px;
+    }
+    .fxos-features {
+        .feature {
+            width: 24%;
+        }
+    }
+    .fxos-help {
+        .help {
+            &:first-child {
+                margin-left: 110px;
+            }
+        }
+    }
+}
+
+/****************************************************************************/
+// @Landscape Layout: 1024x768
+@media only screen and (max-width: 1024px) {
+    .content-wrapper {
+        margin: 0 auto;
+        width: 1000px;
+    }
+    .phone-container {
+        img {
+            width: 680px;
+            height: 516px;
+        }
+    }
+    .fxos-features {
+        .content-wrapper {
+            width: 960px;
+        }
+        .feature {
+            width: 29%;
+        }
+    }
+    .fxos-apps {
+        .apps {
+            li {
+                margin: 0 35px 40px 35px;
+            }
+        }
+    }
+    .fxos-help {
+        .help {
+            width: 290px;
+        }
+    }
+}
+
+/****************************************************************************/
+// @Portrait layout: 768x1024
+@media only screen and (max-width: 768px) {
     .content-wrapper {
         margin: 0 auto;
         width: 740px;
@@ -663,13 +718,10 @@ ul.apps {
             height: 516px;
         }
     }
-    .try-homescreen {
-        top: 200px;
-        left: 110px;
-    }
-    .try-swipe {
-        top: 230px;
-        left: 655px;
+    .fxos-features {
+        .content-wrapper {
+            width: 720px;
+        }
     }
     .demo,
     .fxos-apps {
@@ -696,9 +748,9 @@ ul.apps {
     }
     .fxos-help {
         .help {
-            width: 240px;
+            width: 230px;
             &:first-child {
-                margin: 0;
+                margin: 0 0 0 30px;
             }
         }
     }
@@ -709,7 +761,7 @@ ul.apps {
 @media only screen and (max-width: @breakTablet) {
     main {
         h1 {
-            background: transparent url(/media/img/firefox/os-new/fxos_wordmark320.png) 0 0 no-repeat;
+            background: transparent url(/media/img/firefox/os-new/fxos_wordmark320.png) 10px 0 no-repeat;
             margin: 0px auto;
             width: 320px;
             height: 90px;
@@ -732,6 +784,75 @@ ul.apps {
             height: 228px;
         }
     }
+    .fxos-features {
+        padding: 80px 0 100px;
+        .content-wrapper {
+            width: 320px;
+        }
+        .feature {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+        }
+    }
+    .fxos-apps {
+        .app-group-selector {
+            a {
+                padding: .6em;
+                font-size: .6em;
+            }
+        }
+        .apps {
+            img {
+                width: 71px;
+                height: 71px;
+            }
+            li {
+                margin: 0 10px 20px 10px;
+            }
+        }
+    }
+    .apps-marketplace {
+        img {
+            width: 71px;
+            height: 71px;
+        }
+        li {
+            margin: 0 10px 20px 10px;
+        }
+    }
+    .fxos-marketplace {
+        .marketplace {
+            padding: 15px 40px 15px 70px;
+        }
+    }
+    .fxos-news {
+        padding: 30px 43px 10px;
+        text-align: left;
+        .content-wrapper {
+            width: 275px;
+        }
+        ul {
+            width: 86%;
+            li {
+                margin-left: 0;
+            }
+        }
+    }
+    .fxos-help {
+        padding: 30px 43px 10px;
+        .content-wrapper {
+            width: 265px;
+        }
+        .help {
+            display: block;
+            margin-bottom: 30px;
+            width: auto;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
 }
 
 /****************************************************************************/
@@ -745,6 +866,11 @@ ul.apps {
         img {
             width: 460px;
             height: 349px;
+        }
+    }
+    .fxos-features {
+        .content-wrapper {
+            width: 320px;
         }
     }
 }
