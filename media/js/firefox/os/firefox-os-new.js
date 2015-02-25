@@ -5,6 +5,32 @@
 ;(function($) {
     'use strict';
 
+    var $appGroupSelector = $('.app-group-selector');
+    var $apps = $('img', '.apps');
+    var $categoryTriggers = $('a', $appGroupSelector);
+
+    $appGroupSelector.on('click', 'a', function(event) {
+        event.preventDefault();
+        var $eventTarget = $(this);
+        var category = $eventTarget.data('category');
+
+        // reset all the app icons
+        $apps.addClass('fade');
+        // reset all the category selector buttons
+        $categoryTriggers.removeClass('active-state');
+        // set the clicked element to active
+        $eventTarget.addClass('active-state');
+
+        $apps.each(function(app) {
+            var $currentImg = $(this);
+            if ($currentImg.hasClass(category)) {
+                $currentImg.removeClass('fade');
+            }
+        });
+    });
+
+    $('li:first-child a', $appGroupSelector).addClass('active-state').click();
+
     var $demoContainer = $('.demo');
     var $fxosHeroSpace = $('.fxos-hero-space');
     var $phoneViewContainer = $('.phone');
@@ -84,12 +110,11 @@
         }
     });
 
-    var COUNTRY_CODE = '';
+    var COUNTRY_CODE = 'de';
     /*
     * Get country code via geo-ip lookup
     */
     function getGeoLocation () {
-        console.log('get geo location');
         try {
             console.log('COUNTRY_CODE', geoip_country_code());
             COUNTRY_CODE = geoip_country_code().toLowerCase();
@@ -168,6 +193,7 @@
     */
     function setPartnerContent () {
 
+        var $window = $(window);
         var $provider = $('#provider-links').find('.provider[data-country="' + COUNTRY_CODE + '"]');
 
         // if there are partners available, update UI
@@ -197,7 +223,7 @@
     }
 
     $script('//geo.mozilla.org/country.js', function() {
-        getGeoLocation();
+        //getGeoLocation();
         setNewsletterDefaults();
         setPartnerContent();
     });
