@@ -26,6 +26,10 @@
 
 {% block site_header %}{% endblock %}
 
+{% block site_header_unwrapped %}
+  {% include 'firefox/includes/family-nav.html' %}
+{% endblock %}
+
 {% block content %}
   <main role="main">
     <section class="fxos-hero-space">

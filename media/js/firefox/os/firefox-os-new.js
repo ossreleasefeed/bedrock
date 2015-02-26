@@ -5,6 +5,12 @@
 ;(function($) {
     'use strict';
 
+    var fxNavConfig = {
+        primaryId: 'os'
+    };
+
+    Mozilla.FxFamilyNav.init(fxNavConfig);
+
     var $appGroupSelector = $('.app-group-selector');
     var $apps = $('img', '.apps');
     var $categoryTriggers = $('a', $appGroupSelector);
@@ -68,7 +74,7 @@
         // scales and fades the large phone image
         $phoneViewContainer.toggleClass('scale');
         // activate the demo area
-        $demoContainer.toggleClass('active');
+        $demoContainer.toggleClass('fxos-active');
 
         // if a demo was specified show and enable animation
         if (demo) {

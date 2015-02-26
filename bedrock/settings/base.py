@@ -541,6 +541,7 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/sandstone/sandstone-resp.less',
             'css/base/mozilla-modal.less',
+            'css/firefox/family-nav.less',
             'css/firefox/os/get_device.less',
             'css/firefox/os/firefox-os-new.less',
         ),
@@ -1338,8 +1339,13 @@ PIPELINE_JS = {
     'firefox_os_new': {
         'source_filenames': (
             'js/base/mozilla-modal.js',
+            'js/libs/jquery.waypoints.min.js',
+            'js/libs/jquery.waypoints-sticky.min.js',
+            'js/libs/tweenmax.1.9.7.min.js',
+            'js/libs/superscrollorama-1.0.1.js',
             'js/libs/jquery.color.js',
             'js/libs/script.js',
+            'js/firefox/family-nav.js',
             'js/firefox/os/firefox-os-new.js',
             'js/firefox/os/desktop.js',
             'js/firefox/os/have-it.js',
