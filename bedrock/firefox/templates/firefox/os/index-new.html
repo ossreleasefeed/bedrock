@@ -34,7 +34,10 @@
           <h1><span>{{_('Firefox <span>OS<span>')}}</span></h1>
           <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
 
-          <a id="primary-cta-signup" href="#email-form-wrapper" class="cta-button get-newsletter hidden newsletter-signup-toggle">{{_('Sign me up')}}</a>
+          <div id="primary-cta-signup" class="signup hidden">
+            <a href="#email-form-wrapper" class="cta-button get-newsletter newsletter-signup-toggle">{{_('Sign me up')}}</a>
+            <p class="signup-txt">{{_('Sign up for our monthly newsletter and get the latest on Firefox OS')}}</p>
+          </div>
           <a id="primary-cta-phone" href="#get-device" class="cta-button get-phone hidden">{{_('Get a phone')}}</a>
 
           <div href="#"  class="phone-container">
@@ -189,7 +192,7 @@
           <h3>{{_('For Developers')}}</h3>
           <ul>
             <li><a href="//developer.mozilla.org">{{_('Mozilla Developer Network')}}</a></li>
-            <li><a href="//webmaker.or/appmaker">{{_('Mozilla Appmaker')}}</a></li>
+            <li><a href="//webmaker.org/appmaker">{{_('Mozilla Appmaker')}}</a></li>
             <li><a href="//www.mozilla.org/firefox/os/devices/">{{_('Firefox OS devices')}}</a></li>
             <li><a href="//www.mozilla.org/firefox/os/devices/tv/">{{_('Other Firefox OS versions')}}</a></li>
           </ul>
