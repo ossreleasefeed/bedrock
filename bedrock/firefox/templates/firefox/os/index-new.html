@@ -27,7 +27,7 @@
 {% block site_header %}{% endblock %}
 
 {% block content %}
-  <main>
+  <main role="main">
     <section class="fxos-hero-space">
       <div class="content-wrapper">
         <div class="phone">
@@ -35,22 +35,24 @@
           <p class="tagline">{{_('Designed to give you just what you need, just when you need it.')}}</p>
 
           <div id="primary-cta-signup" class="signup hidden">
-            <a href="#email-form-wrapper" class="cta-button get-newsletter newsletter-signup-toggle">{{_('Sign me up')}}</a>
+            <a href="#email-form-wrapper" class="cta-button get-newsletter newsletter-signup-toggle" role="button" aria-haspopup="true">{{_('Sign me up')}}</a>
             <p class="signup-txt">{{_('Sign up for our monthly newsletter and get the latest on Firefox OS')}}</p>
           </div>
-          <a id="primary-cta-phone" href="#get-device" class="cta-button get-phone hidden">{{_('Get a phone')}}</a>
+          <a id="primary-cta-phone" href="#get-device" class="cta-button get-phone hidden" role="button" aria-haspopup="true">{{_('Get a phone')}}</a>
 
           <div href="#"  class="phone-container">
             <img src="{{ static('img/firefox/os-new/device_static.png') }}" width="1030" height="782" alt="{{_('Firefox OS device illustration')}}" />
 
-            <a href="#" id="trigger-homescreen" class="try-homescreen">
+            <a href="#" id="trigger-homescreen" class="try-homescreen" role="button">
+              <!-- TODO: descriptive content to be added post March 1 for a11y -->
               <div class="throbber throb-one"></div>
               <div class="throbber throb-two"></div>
               <div class="throbber throb-three"></div>
               <div class="throbber throb-four"></div>
             </a>
 
-            <a href="#" id="trigger-swipe" class="try-swipe">
+            <a href="#" id="trigger-swipe" class="try-swipe" role="button">
+              <!-- TODO: descriptive content to be added post March 1 for a11y -->
               <div class="throbber throb-one"></div>
               <div class="throbber throb-two"></div>
               <div class="throbber throb-three"></div>
@@ -206,9 +208,10 @@
       </div>
     </section>
   </main>
-{% endblock %}
 
-{% include '/firefox/os/_get_device.html' %}
+  {% include '/firefox/os/_get_device.html' %}
+
+{% endblock %}
 
 {% block email_form %}
   <div id="email-form-wrapper">

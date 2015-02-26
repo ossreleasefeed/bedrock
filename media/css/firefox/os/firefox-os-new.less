@@ -77,23 +77,21 @@ main {
     @media only screen and (max-width: 1600px) {
         width: 1200px;
     }
-
     @media only screen and (max-width: 1440px) {
         width: 1000px;
     }
-
     @media only screen and (max-width: 1024px) {
         width: 800px;
     }
-
     @media only screen and (max-width: 768px) {
         width: 740px;
     }
-
     @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
         width: 480px;
     }
-
+    @media only screen and (max-width: @breakMobileLandscape) {
+        width: 420px;
+    }
     @media only screen and (max-width: @breakMobile) {
         width: 320px;
     }
@@ -239,6 +237,9 @@ main {
 .try-homescreen,
 .try-swipe {
     display: none;
+    span {
+        .visually-hidden();
+    }
 }
 
 .try-homescreen {
@@ -423,6 +424,9 @@ main {
         @media only screen and (min-width: @breakMobileLandscape) and (max-width: @breakTablet) {
             width: 610px;
         }
+        @media only screen and (max-width: @breakMobileLandscape) {
+            width: 360px;
+        }
         @media only screen and (max-width: @breakMobile) {
             width: 310px;
         }
@@ -442,17 +446,14 @@ main {
         @media only screen and (max-width: 1440px) {
             width: 24%;
         }
-
         @media only screen and (max-width: 1024px) {
             width: 29%;
         }
-
-        @media only screen and (max-width: @breakMobile) {
+        @media only screen and (max-width: @breakMobileLandscape) {
             display: block;
             margin: 0 auto;
             width: 90%;
         }
-
         p {
             color: #999;
             font-size: 1.1em;
@@ -604,9 +605,6 @@ main {
         vertical-align: top;
 
         @media only screen and (max-width: 1024px) {
-            width: 290px;
-        }
-        @media only screen and (max-width: 768px) {
             width: 230px;
         }
         @media only screen and (max-width: @breakMobile) {
