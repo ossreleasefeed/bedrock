@@ -10,7 +10,7 @@ var helpers = require('../lib/helpers');
 var path = '/firefox/os/2.0/';
 var url = config.base() + path;
 
-casper.test.begin('Family Navigation, Template: ' + url, 6, function suite(test) {
+casper.test.begin('Family Navigation, Elements: ' + url, 6, function suite(test) {
 
     casper.start(url, function() {
         test.assertVisible('#fxfamilynav-primary > li > a', 'Primary navigation links are visible');
@@ -22,23 +22,23 @@ casper.test.begin('Family Navigation, Template: ' + url, 6, function suite(test)
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
 
-casper.test.begin('Family Navigation, Open tertiary links: ' + url, 1, function suite(test) {
+casper.test.begin('Family Navigation, Open tertiary link menu: ' + url, 1, function suite(test) {
 
     casper.start(url, function() {
         this.mouse.click('#fxfamilynav-tertiarynav-trigger');
     });
 
-    casper.then(function() {
-        this.waitUntilVisible('#fxfamilynav-tertiarynav', function() {
-            test.assert(true, 'Tertiary links opened successfully');
-        });
+    casper.waitUntilVisible('#fxfamilynav-tertiarynav', function() {
+        test.assert(true, 'Tertiary links opened successfully');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
@@ -49,17 +49,17 @@ casper.test.begin('Family Navigation, Link hover: ' + url, 2, function suite(tes
         this.mouse.move('#fxfamilynav-primary > li > a[data-id="android"]');
     });
 
-    casper.then(function() {
-        this.waitUntilVisible('#android-subnav', function() {
-            test.assert(true, 'Secondary nav shows on hover');
-            this.mouse.move(0,0);
-            this.waitWhileVisible('#android-subnav', function() {
-                test.assert(true, 'Secondary nav hides on leave');
-            });
-        });
+    casper.waitUntilVisible('#android-subnav', function() {
+        test.assert(true, 'Secondary nav shows on hover');
+        this.mouse.move(0,0);
+    });
+
+    casper.waitWhileVisible('#android-subnav', function() {
+        test.assert(true, 'Secondary nav hides on leave');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
@@ -70,18 +70,16 @@ casper.test.begin('Family Navigation, Scroll down: ' + url, 2, function suite(te
         this.scrollToBottom();
     });
 
-    casper.then(function() {
-        this.waitForSelector('#fxfamilynav-header.stuck', function() {
-            test.assert(true, 'Navigation is sticky when scrolled');
-            var buttonVisibility = this.evaluate(function() {
-                return $('#fxfamilynav-cta-wrapper').css('visibility') === 'visible';
-            });
-            casper.echo(buttonVisibility);
-            test.assertTrue(buttonVisibility, 'CTA button is visible when scrolled');
+    casper.waitForSelector('#fxfamilynav-header.stuck', function() {
+        test.assert(true, 'Navigation is sticky when scrolled');
+        var buttonVisibility = this.evaluate(function() {
+            return $('#fxfamilynav-cta-wrapper').css('visibility') === 'visible';
         });
+        test.assertTrue(buttonVisibility, 'CTA button is visible when scrolled');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
@@ -92,21 +90,20 @@ casper.test.begin('Family Navigation, Scroll up: ' + url, 2, function suite(test
         this.scrollToBottom();
     });
 
-    casper.then(function() {
-        this.waitForSelector('#fxfamilynav-header.stuck', function() {
-            this.scrollTo(0,0);
-            this.waitWhileSelector('#fxfamilynav-header.stuck', function() {
-                test.assert(true, 'Navigation is no longer sticky when scrolled back to top');
-                var buttonVisibility = this.evaluate(function() {
-                    return $('#fxfamilynav-cta-wrapper').css('visibility') === 'visible';
-                });
-                casper.echo(buttonVisibility);
-                test.assertFalsy(buttonVisibility, 'CTA button is no longer visible when scrolled up');
-            });
+    casper.waitForSelector('#fxfamilynav-header.stuck', function() {
+        this.scrollTo(0,0);
+    });
+
+    casper.waitWhileSelector('#fxfamilynav-header.stuck', function() {
+        test.assert(true, 'Navigation is no longer sticky when scrolled back to top');
+        var buttonVisibility = this.evaluate(function() {
+            return $('#fxfamilynav-cta-wrapper').css('visibility') === 'visible';
         });
+        test.assertFalsy(buttonVisibility, 'CTA button is no longer visible when scrolled up');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
@@ -127,6 +124,7 @@ casper.test.begin('Family Navigation, Mobile interaction: ' + url, 4, function s
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });

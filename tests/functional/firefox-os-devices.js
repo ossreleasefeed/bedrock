@@ -10,33 +10,66 @@ var helpers = require('../lib/helpers');
 var path = '/firefox/os/devices/';
 var url = config.base() + path;
 
-casper.test.begin('Firefox OS Devices, Template: ' + url, 5, function suite(test) {
+casper.test.begin('Firefox OS Devices, Elements: ' + url, 7, function suite(test) {
 
     casper.start(url, function() {
-
-        // Page loaded
         test.assertHttpStatus(200);
-
-        // Location picker exists
-        test.assertExists('#location');
-
-        // Phones section exists
-        test.assertExists('#smartphones');
-
-        // Provider links exist
-        test.assertExists('#provider-links');
-
-        // Purchase buttons exist
-        test.assertElementCount('.purchase-button', 2);
-
+        test.assertExists('#location', 'Location picker exists');
+        test.assertExists('#device-nav', 'Device navigation exists');
+        test.assertExists('#smartphones', 'Smartphone section exists');
+        test.assertExists('#tvs', 'Television section exists');
+        test.assertExists('#provider-links', 'Provider links exist');
+        test.assertElementCount('.purchase-button', 2, 'Purchase buttons exist');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
 
-casper.test.begin('Firefox OS Devices, Open purchase modal: ' + url, 2, function suite(test) {
+casper.test.begin('Firefox OS Devices, Click phone: ' + url, 2, function suite(test) {
+
+    casper.start(url, function() {
+        this.click('a[href="#alcatel_onetouchfire"]');
+    });
+
+    casper.waitUntilVisible('#alcatel_onetouchfire', function() {
+        test.assert(true, 'Phone detail expanded successfully');
+        this.click('#alcatel_onetouchfire .device-detail-close');
+    });
+
+    casper.waitWhileVisible('#alcatel_onetouchfire', function() {
+        test.assert(true, 'Phone detail collapsed successfully');
+    });
+
+    casper.run(function() {
+        test.done();
+        helpers.done();
+    });
+});
+
+casper.test.begin('Firefox OS Devices, Click tab navigation: ' + url, 1, function suite(test) {
+
+    casper.start(url, function() {
+        this.click('a[href="#alcatel_onetouchfire"]');
+    });
+
+    casper.waitUntilVisible('#alcatel_onetouchfire-specifications-tab', function() {
+        this.click('#alcatel_onetouchfire-specifications-tab');
+    });
+
+    casper.waitUntilVisible('#page-alcatel_onetouchfire-specifications', function() {
+        test.assert(true, 'Phone specs shown successfully');
+    });
+
+    casper.run(function() {
+        test.done();
+        helpers.done();
+    });
+});
+
+casper.test.begin('Firefox OS Devices, Purchase modal: ' + url, 3, function suite(test) {
 
     casper.start(url, function() {
         this.fillSelectors('#form-locations', {
@@ -45,37 +78,18 @@ casper.test.begin('Firefox OS Devices, Open purchase modal: ' + url, 2, function
         this.click('.purchase-button');
     });
 
-    casper.then(function() {
-        this.waitUntilVisible('#modal', function() {
-            test.assert(true, 'Purchase modal opened successfully');
-            test.assertExists('#modal #get-device');
-        });
+    casper.waitUntilVisible('#modal', function() {
+        test.assert(true, 'Purchase modal opened successfully');
+        test.assertExists('#modal #get-device');
+        this.click('#modal-close');
+    });
+
+    casper.waitWhileVisible('#modal', function() {
+        test.assert(true, 'Purchase modal closed successfully');
     });
 
     casper.run(function() {
-        helpers.done();
-    });
-});
-
-casper.test.begin('Firefox OS Devices, Close purchase modal: ' + url, 1, function suite(test) {
-
-    casper.start(url, function() {
-        this.fillSelectors('#form-locations', {
-            '#location': 'ar'
-        });
-        this.click('.purchase-button');
-    });
-
-    casper.then(function() {
-        this.waitUntilVisible('#modal', function() {
-            this.click('#modal-close');
-            this.waitWhileVisible('#modal', function() {
-                test.assert(true, 'Purchase modal closed successfully');
-            });
-        });
-    });
-
-    casper.run(function() {
+        test.done();
         helpers.done();
     });
 });

@@ -8,76 +8,67 @@
 Functional testing
 ==================
 
-Bedrock runs a suite of front-end functional tests using `CasperJS`_.
+Bedrock runs a suite of front-end functional tests using `CasperJS`_, which is powered by
+a headless web browser called `PhantomJS`_.
 
-Prerequisites
--------------
+Installation
+------------
 
-`PhantomJS`_ is a headless web browser used to power CasperJS. We currently recommend
-installing `PhantomJS 1.9.8`_.
+The specific version of CasperJS and PhantomJS needed to run the tests can be installed by running the
+following command from the root directory of the project::
 
-To test that you have PhantomJS installed correctly, you can run the following command::
+    npm install
 
-    phantomjs --version
+.. Note::
+
+    You may have already run ``npm install`` when initially setting up bedrock to run locally,
+    in which case you can skip running this command again.
+
+To confirm that you have PhantomJS installed correctly, you can run the following command::
+
+    ./node_modules/.bin/phantomjs --version
 
 This should output the following::
 
     1.9.8
 
-Depending on your operating system, you may need to set a PATH for the PhantomJS executable.
-On OSX, assuming ``/usr/local/bin/`` is in your PATH, you can create a symbolic link to the
-PhantomJS executable like so::
-
-    ln -s /path/to/phantomjs /usr/local/bin/
-
-Installation
-------------
-
-To install CasperJS, please see the `instruction here <http://docs.casperjs.org/en/1.1-beta2/installation.html>`_.
-You are free to install it via any of the methods described, but for convenience we suggest using npm::
-
-    npm install -g casperjs@1.1.0-beta3
-
-.. Note::
-
-    The ``-g`` flag makes the ``casperjs`` executable available system-wide.
-
-To test that you have CasperJS installed and running together with the correct version
+To confirm that you have CasperJS installed and running together with the correct version
 of PhantomJS, you can run the following command::
 
-    casperjs
+    PHANTOMJS_EXECUTABLE=./node_modules/.bin/phantomjs ./node_modules/.bin/casperjs
 
 You should now see output similar to::
 
-    CasperJS version 1.1.0-beta3 at /usr/local/lib/node_modules/casperjs, using phantomjs version 1.9.8
+    CasperJS version 1.1.0-beta3 at /bedrock/node_modules/casperjs, using phantomjs version 1.9.8
 
 Running tests
 -------------
 
-To run the bedrock tests against your local bedrock instance, type::
+To run the functional tests against your local bedrock instance, type::
 
-    casperjs test tests/functional --config=tests/config.json
+    npm test
+
+This is a shortcut for the following command::
+
+    PHANTOMJS_EXECUTABLE=./node_modules/.bin/phantomjs ./node_modules/.bin/casperjs test tests/functional --config=tests/config.json
 
 This will run all test files found in the ``tests/functional`` directory and assumes you
 have bedrock running at ``localhost`` on port ```8000``
 
-To run a single test::
+To run a single test suite you can tell CasperJS to excecute a specific file e.g.::
 
-    casperjs test tests/functional/home.js --config=tests/config.json
+    test tests/functional/home.js
 
-You can also easily run the tests against any bedrock environment. For example:
+You can also easily run the tests against any bedrock environment by specifying the domain.
 
-To run tests against dev::
+For example, to run all functional tests against dev::
 
-    casperjs test tests/functional --domain=https://www-dev.allizom.org --config=tests/config.json
+    test tests/functional --domain=https://www-dev.allizom.org
 
-To run tests against stage::
+.. Note::
 
-    casperjs test tests/functional --domain=https://www.allizom.org --config=tests/config.json
-
-To run tests against prod::
-
-    casperjs test tests/functional --domain=https://www.mozilla.org --config=tests/config.json
+    Make sure to include the configuration file ``--config=tests/config.json`` when running tests.
+    This is needed for PhantomJS to open certain URLs served over https.
 
 Debugging
 ---------

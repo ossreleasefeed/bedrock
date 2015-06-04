@@ -4,15 +4,13 @@ python:
   - "2.7"
 node_js:
   - "0.10"
-env:
-  global:
-    - PIP_DOWNLOAD_CACHE="pip_cache"
 branches:
   only:
     - master
 cache:
   directories:
     - $HOME/.cache/pip
+    - node_modules
 before_script:
   - flake8 bedrock lib
   - python manage.py runscript check_calendars
@@ -22,12 +20,10 @@ before_script:
   - python manage.py collectstatic --noinput -v 0
   - travis_retry python manage.py update_product_details
   - travis_retry svn checkout https://svn.mozilla.org/projects/mozilla.com/trunk/locales/ locale
-  - travis_retry npm install -g casperjs@1.1.0-beta3
-  - phantomjs --version
-  - casperjs --version
+  - travis_retry npm install --quiet casperjs@1.1.0-beta3 phantomjs@1.9.15
 script:
+  - PHANTOMJS_EXECUTABLE=./node_modules/.bin/phantomjs ./node_modules/.bin/casperjs test tests/functional --domain=https://www-dev.allizom.org --config=tests/config.json
   - coverage run manage.py test
-  - casperjs test tests/functional --domain=https://www-dev.allizom.org --config=tests/config.json
 before_install:
   - travis_retry git submodule update --init --recursive
 install:

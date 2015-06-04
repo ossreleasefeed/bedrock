@@ -10,40 +10,22 @@ var helpers = require('../lib/helpers');
 var path = '/';
 var url = config.base() + path;
 
-casper.test.begin('Home page, Template: ' + url, 9, function suite(test) {
+casper.test.begin('Home page, Elements: ' + url, 9, function suite(test) {
 
     casper.start(url, function() {
-
-        // Page loaded
         test.assertHttpStatus(200);
-
-        // Mozilla wordmark
-        test.assertExists('.main-header h1');
-
-        // Home page promos
-        test.assertElementCount('.promo-grid > li', 16);
-
-        // Contribute CTA button exists
-        test.assertExists('#community .contribute-btn');
-
-        // Featured event
-        test.assertExists('#upcoming-events .featured-event');
-
-        // Upcoming events list
-        test.assertElementCount('#upcoming-events .events-list > li > a', 3);
-
-        // All events CTA button
-        test.assertExists('#upcoming-events .more-large');
-
-        // Secondary links
-        test.assertElementCount('#secondary-links ul > li > a', 3);
-
-        // Newsletter signup form
-        test.assertExists('.footer-newsletter-form');
-
+        test.assertExists('.main-header h1', 'Mozilla wordmark exists');
+        test.assertElementCount('.promo-grid > li', 16, '16 home page promos exist');
+        test.assertExists('#community .contribute-btn', 'Contribute CTA button exists');
+        test.assertExists('#upcoming-events .featured-event', 'Featured event exists');
+        test.assertElementCount('#upcoming-events .events-list > li > a', 3, 'Upcoming events exist');
+        test.assertExists('#upcoming-events .more-large', 'Events CTA button exists');
+        test.assertElementCount('#secondary-links ul > li > a', 3, 'Secondary links exist');
+        test.assertExists('.footer-newsletter-form', 'Newsletter form exists');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });
@@ -57,13 +39,12 @@ casper.test.begin('Home page, Newsletter submission: ' + url, 1, function suite(
         }, true);
     });
 
-    casper.then(function() {
-        this.waitForUrl(/sign-up-for-mozilla/, function() {
-            test.assertUrlMatch(/sign-up-for-mozilla/, 'Newsletter submitted successfully');
-        });
+    casper.waitForUrl(/sign-up-for-mozilla/, function() {
+        test.assertUrlMatch(/sign-up-for-mozilla/, 'Newsletter submitted successfully');
     });
 
     casper.run(function() {
+        test.done();
         helpers.done();
     });
 });

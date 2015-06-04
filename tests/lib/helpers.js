@@ -8,7 +8,6 @@
 var config = require('../lib/config');
 
 function done() {
-    casper.test.done();
     casper.options.viewportSize = config.viewport.desktop;
 }
 
