@@ -37,3 +37,19 @@ casper.test.begin('Firefox New, Direct download link: ' + url, 1, function suite
         helpers.done();
     });
 });
+
+casper.test.begin('Firefox New, Click download button: ' + url, 1, function suite(test) {
+
+    casper.start(url, function() {
+        this.click('#features-download .download-link');
+    });
+
+    casper.waitForResource(/https:\/\/download\.mozilla\.org\//, function() {
+        test.assert(true, 'Download started successfully');
+    });
+
+    casper.run(function() {
+        test.done();
+        helpers.done();
+    });
+});
