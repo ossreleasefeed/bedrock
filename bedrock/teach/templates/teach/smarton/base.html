@@ -20,6 +20,9 @@
 
 {% block site_header %}{% endblock %}
 
+{# We use a localized hashtag for Spanish locales #}
+{% set hashtag = ' #SéUnExperto' if LANG.startswith('es-') else ' #SmartOn' %}
+
 {% block content %}
 
   {% block smarton_header %}
