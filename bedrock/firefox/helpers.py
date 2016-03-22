@@ -50,22 +50,17 @@ def ios_builds(channel, builds=None):
 
 @jingo.register.function
 @jinja2.contextfunction
-def download_firefox(ctx, channel='release', small=False, icon=True,
-                     platform='all', dom_id=None, locale=None, simple=False,
-                     force_direct=False, force_full_installer=False,
-                     force_funnelcake=False, check_old_fx=False):
+def download_firefox(ctx, channel='release', platform='all',
+                     dom_id=None, locale=None, force_direct=False,
+                     force_full_installer=False, force_funnelcake=False,
+                     check_old_fx=False):
     """ Output a "download firefox" button.
 
     :param ctx: context from calling template.
     :param channel: name of channel: 'release', 'beta' or 'alpha'.
-    :param small: Display the small button if True.
-    :param icon: Display the Fx icon on the button if True.
     :param platform: Target platform: 'desktop', 'android', 'ios', or 'all'.
     :param dom_id: Use this string as the id attr on the element.
     :param locale: The locale of the download. Default to locale of request.
-    :param simple: Display button with text only if True. Will not display
-            icon or privacy/what's new/systems & languages links. Can be used
-            in conjunction with 'small'.
     :param force_direct: Force the download URL to be direct.
     :param force_full_installer: Force the installer download to not be
             the stub installer (for aurora).
@@ -154,14 +149,11 @@ def download_firefox(ctx, channel='release', small=False, icon=True,
         'product': 'firefox-%s' % platform,
         'builds': builds,
         'id': dom_id,
-        'small': small,
-        'simple': simple,
         'channel': alt_channel,
         'show_desktop': show_desktop,
         'show_android': show_android,
         'show_ios': show_ios,
-        'icon': icon,
-        'check_old_fx': check_old_fx and simple,
+        'check_old_fx': check_old_fx,
     }
 
     html = jingo.render_to_string(ctx['request'],
