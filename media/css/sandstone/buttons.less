@@ -345,34 +345,18 @@ html[lang^='en'] {
 
 .download-button .download-link {
     .button-flat-green;
+    margin-bottom: 0;
 
-    .download-content {
-        display: block;
-        position: relative;
-        color: #b8e779;
-        _background-color: @buttonGreenDark;
-        min-height: 82px;
-        margin-bottom: -12px;
-        _margin-bottom: 0;
-        padding: 10px 12px 16px;
-    }
     .download-title,
     .download-title span {
         display: block;
         color: #fff;
         .font-size(30px);
         font-weight: normal;
-        letter-spacing: -0.02em;
-        padding-top: 8px;
-        margin-bottom: 10px;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     }
     .download-title span {
         padding-top: 0;
         margin-bottom: 5px;
-    }
-    .download-subtitle {
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
     }
 }
 
@@ -382,12 +366,6 @@ html[lang^='en'] {
     .download-link .download-title span {
         .font-size(24px);
     }
-}
-
-// reduces right/left padding from 40px to 20px so 'Update your Firefox'
-// string fits on one line (for en-US, at least)
-.download-button.download-button-check-old-fx .download-link .download-content {
-    padding: @baseLine;
 }
 
 // OS detection
@@ -438,7 +416,6 @@ html[lang^='en'] {
     max-width: 250px;
 }
 
-
 // Small print
 
 .download-button small.download-other,
@@ -447,14 +424,14 @@ html[lang^='en'] {
 .ios .download-button-desktop small.download-other {
     .open-sans;
     display: block;
-    .font-size(11px);
+    .font-size(13px);
     text-align: center;
     margin-top: 6px;
     color: @textColorLight;
 
     a:link,
     a:visited {
-        color: #999;
+        color: #fff;
     }
 }
 
@@ -522,17 +499,6 @@ html[lang^='en'] {
             .font-size(@largeFontSize);
             color: #346012;
             text-shadow: 0 1px rgba(255, 255, 255, 0.2);
-        }
-        .download-subtitle {
-            display: block;
-            position: static;
-            text-align: left;
-            margin-right: 40px;
-            color: #fff;
-            .font-size(11px);
-            line-height: 1.2;
-            letter-spacing: normal;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
         }
     }
 }
