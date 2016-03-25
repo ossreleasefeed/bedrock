@@ -50,6 +50,41 @@ def ios_builds(channel, builds=None):
 
 @jingo.register.function
 @jinja2.contextfunction
+def firefox_footer_links(ctx, channel='release', platform='all'):
+    """ Outputs Firefox footer links
+    :param ctx: context from calling template.
+    :param channel: name of channel: 'release', 'beta' or 'alpha'.
+    :param platform: Target platform: 'desktop', 'android', or 'ios'.
+    :return: The footer links html.
+    """
+
+    show_desktop = platform in ['all', 'desktop']
+    show_android = platform in ['all', 'android']
+    show_ios = platform in ['all', 'ios']
+    alt_channel = '' if channel == 'release' else channel
+
+    # Gather data about the build for each platform
+    builds = []
+
+    if show_android:
+        builds = android_builds(channel, builds)
+
+    data = {
+        'show_desktop': show_desktop,
+        'show_android': show_android,
+        'show_ios': show_ios,
+        'channel': alt_channel,
+        'builds': builds,
+    }
+
+    html = jingo.render_to_string(ctx['request'],
+                                  'firefox/includes/firefox-footer-links.html',
+                                  data)
+    return jinja2.Markup(html)
+
+
+@jingo.register.function
+@jinja2.contextfunction
 def download_firefox(ctx, channel='release', platform='all',
                      dom_id=None, locale=None, force_direct=False,
                      force_full_installer=False, force_funnelcake=False,
@@ -68,8 +103,7 @@ def download_firefox(ctx, channel='release', platform='all',
             'latest', which bouncer will translate to the funnelcake build.
     :param check_old_fx: Checks to see if the user is on an old version of
             Firefox and, if true, changes the button text from 'Free Download'
-            to 'Update your Firefox'. Must be used in conjunction with
-            'simple' param being true.
+            to 'Update your Firefox'.
     :return: The button html.
     """
     show_desktop = platform in ['all', 'desktop']
