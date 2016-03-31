@@ -25,12 +25,6 @@
 <![endif]-->
 {% endblock %}
 
-{% block optimizely %}
-  {% if waffle.switch('firefox-products-optimizely') %}
-     {% include 'includes/optimizely.html' %}
-  {% endif %}
-{% endblock %}
-
 {% block body_class %}mozid{% endblock %}
 
 {% block site_header %}
@@ -136,7 +130,11 @@
       <li class="product" id="product-hello">
         <a href="{{ url('firefox.hello') }}" data-link-type="button" data-link-name="Firefox Hello">
           <h2>{{ _('Firefox Hello') }}</h2>
-          <p>{{ _('Free, easy video conversations.') }}</p>
+          {% if l10n_has_tag('hello-copy-update') %}
+            <p>{{ _('Browse the Web with friends.') }}</p>
+          {% else %}
+            <p>{{ _('Free, easy video conversations.') }}</p>
+          {% endif %}
         </a>
       </li>
 
@@ -160,16 +158,16 @@
 {% endblock %}
 
 {% block email_form %}
-  {% if LANG.startswith('en-') %}
-  <aside id="newsletter-subscribe" class="ga-section" data-ga-label="All things Firefox. Sent right to your inbox.">
+  <aside id="newsletter-subscribe" class="ga-section" data-ga-label="Keep up with all things Firefox.">
     <div class="content container">
-      <header>
-        <h3>{{ _('All things Firefox.<br> Sent right to your inbox.') }}</h3>
-      </header>
-      {{ email_newsletter_form(title=' ') }}
+      {% if LANG.startswith('en-') %}
+        {# L10n: Line break for visual formatting. #}
+        {{ email_newsletter_form(title=_('Keep up with<br> all things Firefox.')) }}
+      {% else %}
+        {{ email_newsletter_form(title=_('Get Firefox news')) }}
+      {% endif %}
     </div>
   </aside>
-  {% endif %}
 {% endblock %}
 
 {% block site_footer %}

@@ -117,7 +117,7 @@ PIPELINE_CSS = {
     },
     'contact-spaces': {
         'source_filenames': (
-            'css/libs/mapbox-2.1.5.css',
+            'css/libs/mapbox-2.3.0.css',
             'css/libs/magnific-popup.css',
             'css/base/mozilla-video-poster.less',
             'css/mozorg/contact-spaces.less',
@@ -176,6 +176,7 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/base/mozilla-share-cta.less',
             'css/base/menu-resp.less',
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/all.less',
         ),
         'output_filename': 'css/firefox_all-bundle.css',
@@ -273,6 +274,7 @@ PIPELINE_CSS = {
     },
     'firefox_family': {
         'source_filenames': (
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/family/index.less',
         ),
         'output_filename': 'css/firefox-family-bundle.css',
@@ -318,6 +320,12 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/firefox_firstrun-bundle.css',
     },
+    'firefox_firstrun_learnmore_yahoo_search': {
+        'source_filenames': (
+            'css/firefox/firstrun/learnmore/yahoo-search.less',
+        ),
+        'output_filename': 'css/firefox_firstrun_learnmore_yahoo_search-bundle.css',
+    },
     'firefox_feedback': {
         'source_filenames': (
             'css/base/mozilla-share-cta.less',
@@ -330,7 +338,7 @@ PIPELINE_CSS = {
             'css/base/menu-resp.less',
             'css/base/mozilla-accordion.less',
             'css/base/mozilla-modal.less',
-            'css/libs/mapbox-2.1.5.css',
+            'css/libs/mapbox-2.3.0.css',
             'css/firefox/geolocation.less'
         ),
         'output_filename': 'css/firefox_geolocation-bundle.css',
@@ -359,6 +367,7 @@ PIPELINE_CSS = {
     'firefox_hello': {
         'source_filenames': (
             'css/firefox/family-nav.less',
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/hello/index.less',
         ),
         'output_filename': 'css/firefox_hello-bundle.css',
@@ -368,6 +377,7 @@ PIPELINE_CSS = {
             'css/firefox/family-nav.less',
             'css/base/mozilla-modal.less',
             'css/base/send-to-device.less',
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/ios.less',
         ),
         'output_filename': 'css/firefox_ios-bundle.css',
@@ -402,6 +412,35 @@ PIPELINE_CSS = {
             'css/firefox/new/scene2.less',
         ),
         'output_filename': 'css/firefox_new_scene2-bundle.css',
+    },
+    'firefox_new_redesign_common': {
+        'source_filenames': (
+            'css/sandstone/sandstone-resp.less',
+            'css/tabzilla/tabzilla-static.less',
+            'css/base/simple_footer-resp.less',
+            'css/firefox/new/redesign/common.less',
+        ),
+        'output_filename': 'css/firefox_new_redesign_common-bundle.css',
+    },
+    'firefox_new_redesign_scene1_crater': {
+        'source_filenames': (
+            'css/firefox/new/redesign/scene1-common.less',
+            'css/firefox/new/redesign/scene1-crater.less',
+        ),
+        'output_filename': 'css/firefox_new_redesign_scene1_crater-bundle.css',
+    },
+    'firefox_new_redesign_scene1_browser': {
+        'source_filenames': (
+            'css/firefox/new/redesign/scene1-common.less',
+            'css/firefox/new/redesign/scene1-browser.less',
+        ),
+        'output_filename': 'css/firefox_new_redesign_scene1_browser-bundle.css',
+    },
+    'firefox_new_redesign_scene2': {
+        'source_filenames': (
+            'css/firefox/new/redesign/scene2-common.less',
+        ),
+        'output_filename': 'css/firefox_new_scene2_redesign-bundle.css',
     },
     'firefox_organizations': {
         'source_filenames': (
@@ -453,6 +492,7 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/firefox/family-nav.less',
             'css/firefox/tracking-protection-animation.less',
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/private_browsing/private-browsing-conditionals.less',
             'css/firefox/private_browsing/private-browsing.less',
         ),
@@ -520,6 +560,7 @@ PIPELINE_CSS = {
     },
     'firefox_pocket': {
         'source_filenames': (
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/pocket.less',
         ),
         'output_filename': 'css/firefox_pocket-bundle.css',
@@ -540,6 +581,7 @@ PIPELINE_CSS = {
     'firefox_sync': {
         'source_filenames': (
             'css/firefox/family-nav.less',
+            'css/newsletter/fxnewsletter-subscribe.less',
             'css/firefox/sync.less',
         ),
         'output_filename': 'css/firefox_sync-bundle.css',
@@ -908,7 +950,6 @@ PIPELINE_JS = {
             'js/base/global-init.js',
             'js/newsletter/form.js',
             'js/base/mozilla-client.js',
-            'js/base/mozilla-input-placeholder.js',
             'js/base/mozilla-image-helper.js',
             'js/base/nav-main-resp.js',
         ),
@@ -916,7 +957,7 @@ PIPELINE_JS = {
     },
     'contact-spaces': {
         'source_filenames': (
-            'js/libs/mapbox-2.1.5.js',
+            'js/libs/mapbox-2.3.0.js',
             'js/libs/jquery.history.js',
             'js/mozorg/contact-data.js',
             'js/libs/jquery.magnific-popup.min.js',
@@ -940,7 +981,6 @@ PIPELINE_JS = {
     'contribute-form': {
         'source_filenames': (
             'js/mozorg/contribute/contribute-form.js',
-            'js/base/mozilla-input-placeholder.js',
         ),
         'output_filename': 'js/contribute-form-bundle.js',
     },
@@ -954,7 +994,6 @@ PIPELINE_JS = {
     'contribute-studentambassadors-join': {
         'source_filenames': (
             'js/mozorg/contribute/contribute-studentambassadors-join.js',
-            'js/base/mozilla-input-placeholder.js',
         ),
         'output_filename': 'js/contribute-studentambassadors-join-bundle.js',
     },
@@ -1134,6 +1173,20 @@ PIPELINE_JS = {
             'js/firefox/new/scene2.js',
         ),
         'output_filename': 'js/firefox_new_scene2-bundle.js',
+    },
+    'firefox_new_redesign_scene1_a': {
+        'source_filenames': (
+            'js/firefox/new/redesign/scene1-common.js',
+            'js/firefox/new/redesign/set-scene2-a.js',
+        ),
+        'output_filename': 'js/firefox_new_redesign_scene1_a-bundle.js',
+    },
+    'firefox_new_redesign_scene1_b': {
+        'source_filenames': (
+            'js/firefox/new/redesign/scene1-common.js',
+            'js/firefox/new/redesign/set-scene2-b.js',
+        ),
+        'output_filename': 'js/firefox_new_redesign_scene1_b-bundle.js',
     },
     'firefox_pocket': {
         'source_filenames': (
@@ -1320,9 +1373,16 @@ PIPELINE_JS = {
         'source_filenames': (
             'js/firefox/australis/australis-uitour.js',
             'js/base/mozilla-highlight-target.js',
-            'js/firefox/whatsnew_42/learnmore.js',
+            'js/firefox/firstrun/learnmore/learnmore.js',
         ),
         'output_filename': 'js/firefox_firstrun_42_learnmore-bundle.js',
+    },
+    'firefox_firstrun_learnmore_yahoo_search': {
+        'source_filenames': (
+            'js/firefox/australis/australis-uitour.js',
+            'js/firefox/firstrun/learnmore/yahoo-search.js',
+        ),
+        'output_filename': 'js/firefox_firstrun_learnmore_yahoo_search-bundle.js',
     },
     'firefox_win10_welcome': {
         'source_filenames': (
@@ -1335,7 +1395,7 @@ PIPELINE_JS = {
     },
     'geolocation': {
         'source_filenames': (
-            'js/libs/mapbox-2.1.5.js',
+            'js/libs/mapbox-2.3.0.js',
             'js/base/mozilla-accordion.js',
             'js/base/mozilla-accordion-gatrack.js',
             'js/firefox/geolocation-demo.js',
@@ -1383,7 +1443,6 @@ PIPELINE_JS = {
             'js/libs/jquery.validate.js',
             'js/base/mozilla-form-helper.js',
             'js/mozorg/partnerships.js',
-            'js/base/mozilla-input-placeholder.js',
         ),
         'output_filename': 'js/partnerships-bundle.js',
     },
@@ -1532,18 +1591,6 @@ PIPELINE_JS = {
             'js/foundation/annual2013.js',
         ),
         'output_filename': 'js/annual_2013-bundle.js',
-    },
-    'logo-prototype': {
-        'source_filenames': (
-            'js/styleguide/logo-prototype/vendor/raf.polyfill.js',
-            'js/styleguide/logo-prototype/vendor/tween.js',
-            'js/styleguide/logo-prototype/vendor/lodash.compat.min.js',
-            'js/styleguide/logo-prototype/vendor/perlin.js',
-            'js/styleguide/logo-prototype/vendor/dat.gui.js',
-            'js/libs/jquery-1.11.3.min.js',
-            'js/styleguide/logo-prototype/clock-data.js',
-        ),
-        'output_filename': 'js/logo-prototype-bundle.js',
     },
     'releasenotes': {
         'source_filenames': (

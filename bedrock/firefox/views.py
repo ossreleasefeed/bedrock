@@ -350,7 +350,25 @@ class FirstrunView(LatestFxView):
 
 
 class FirstrunLearnMoreView(LatestFxView):
-    template_name = 'firefox/whatsnew_42/learnmore.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(FirstrunLearnMoreView, self).get_context_data(**kwargs)
+
+        # add funnelcake version to context for use in templates
+        ctx['f'] = self.request.GET.get('f', '')
+
+        return ctx
+
+    def get_template_names(self):
+        locale = l10n_utils.get_locale(self.request)
+        funnelcake = self.request.GET.get('f', '')
+
+        if locale == 'en-US' and funnelcake in ['64', '65']:
+            template = 'firefox/firstrun/learnmore/yahoo-search.html'
+        else:
+            template = 'firefox/firstrun/learnmore/learnmore.html'
+
+        return [template]
 
 
 class WhatsnewView(LatestFxView):
@@ -415,8 +433,8 @@ class TourView(LatestFxView):
 
 def hello(request):
     variant = request.GET.get('v', '')
-    if variant in ['b']:
-        template = 'firefox/hello/index-{0}.html'.format(variant)
+    if variant == 'b':
+        template = 'firefox/hello/index-b.html'
     else:
         template = 'firefox/hello/index.html'
 
@@ -491,78 +509,24 @@ def new(request):
     if request.GET.get('product', None) or request.GET.get('os', None):
         return HttpResponsePermanentRedirect(reverse('firefox.new'))
 
+    locale = l10n_utils.get_locale(request)
+    variant = request.GET.get('v', '')
     scene = request.GET.get('scene', None)
 
+    scene_1_variants = ['1a', '2a', '3a', '4a', '1b', '2b', '3b', '4b']
+    scene_2_variants = ['a', 'b']
+
     if scene == '2':
-        template = 'firefox/new/scene2.html'
+        if locale == 'en-US' and variant in scene_2_variants:
+            template = 'firefox/new/variants/scene2/variant-{0}.html'.format(variant)
+        else:
+            template = 'firefox/new/scene2.html'
     # if no/incorrect scene specified, show scene 1
     else:
-        template = 'firefox/new/scene1.html'
-
-    return l10n_utils.render(request, template)
-
-
-def products_newsletter_test(request, template='firefox/family/index.html'):
-    """
-    Renders the products page template.
-    """
-
-    variant = request.GET.get('v', '')
-
-    if variant in ['b']:
-        template = 'firefox/family/index-{0}.html'.format(variant)
-
-    return l10n_utils.render(request, template)
-
-
-def desktop_newsletter_test(request, template='firefox/desktop/index.html'):
-    """
-    Renders the desktop main page template.
-    """
-
-    variant = request.GET.get('v', '')
-
-    if variant in ['b']:
-        template = 'firefox/desktop/index-{0}.html'.format(variant)
-
-    return l10n_utils.render(request, template)
-
-
-def android_newsletter_test(request, template='firefox/android/index.html'):
-    """
-    Renders the android page template.
-    """
-
-    variant = request.GET.get('v', '')
-
-    if variant in ['b']:
-        template = 'firefox/android/index-{0}.html'.format(variant)
-
-    return l10n_utils.render(request, template)
-
-
-def ios_newsletter_test(request, template='firefox/ios.html'):
-    """
-    Renders the ios page template.
-    """
-
-    variant = request.GET.get('v', '')
-
-    if variant in ['b']:
-        template = 'firefox/ios-{0}.html'.format(variant)
-
-    return l10n_utils.render(request, template)
-
-
-def privatebrowsing_newsletter_test(request, template='firefox/private-browsing.html'):
-    """
-    Renders the private browsing page template.
-    """
-
-    variant = request.GET.get('v', '')
-
-    if variant in ['b']:
-        template = 'firefox/private-browsing-{0}.html'.format(variant)
+        if locale == 'en-US' and variant in scene_1_variants:
+            template = 'firefox/new/variants/scene1/variant-{0}.html'.format(variant)
+        else:
+            template = 'firefox/new/scene1.html'
 
     return l10n_utils.render(request, template)
 
